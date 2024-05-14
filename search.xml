@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/043016107.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>軟體工程師轉職指南：選擇最佳學習路徑</title>
+    <url>/2024/051410000.html</url>
+    <content><![CDATA[<h1 id="軟體工程師轉職指南：選擇最佳學習路徑"><a href="#軟體工程師轉職指南：選擇最佳學習路徑" class="headerlink" title="軟體工程師轉職指南：選擇最佳學習路徑"></a><strong>軟體工程師轉職指南：選擇最佳學習路徑</strong></h1><p>轉職軟體工程師就像開啟一場新的冒險，最先要面對的挑戰就是如何挑選對的學習管道。這方面選擇眾多，免費的 <a href="https://www.google.com/search?q=AppWorks+School">AppWorks School</a>，地區眾多的<a href="https://www.iii.org.tw/">資策會</a>，和由 Youtuber**<a href="https://www.youtube.com/@cwpeng-course">彭彭的課程</a>創立的** <a href="https://www.google.com/search?q=WeHelp+Bootcamp">WeHelp Bootcamp</a> 等實體課程，或 <a href="https://www.google.com/search?q=Alpha+Camp">Alpha Camp</a>、<a href="https://www.google.com/search?q=%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2">六角學院</a> 的線上課程，還有英文比較好的可以考慮外國學習平台如 <a href="https://www.google.com/search?q=Udemy">Udemy</a> 和 <a href="https://www.google.com/search?q=Coursera">Coursera</a>。</p>
+<p>面對這麼多選擇，找到最合適的學習資源成了許多人的一大頭疼。就不同的程式語言&#x2F;工程師相關知識來說，網路上的各種免費資源以及培訓課程都可以助你實現夢想。但事實上每個人的學習風格、背景和目標都不盡相同會影響到最後轉職的成敗。所以如何在這堆資源中選擇，是挑戰的第一步也是最重要的一步。接下來，我會分別介紹不同的資源。</p>
+<h2 id="實體培訓課程"><a href="#實體培訓課程" class="headerlink" title="實體培訓課程"></a><strong>實體培訓課程</strong></h2><p>實體的 Bootcamp 培訓課程，算是歷史比較悠久的工程師轉職方法。但相對上投入的時間(基本上都是全職投入最少 4-6 個月的時間完成課程)以及費用成本都不少：即使是完全免費的 AppWorks School，需要離職最少四個月完全沒有收入仍要承擔生活的費用，還不要說其他學程還需要差不多十萬的學費。如果沒有考慮清楚，這麼在經濟的損失上將會不小。</p>
+<p>但同時在實體課程最大好處就是「環境與文化」，特別當你有一群一起奮鬥的戰友你中途放棄的動機將會大大的減少。當看到別人也同樣為了一些程序苦惱時，在自己卡關時就不會那麼焦慮；或是看到大家周末都在做專案時，會覺得自己應該再拼一點。這些都是實體培訓課的推動力。</p>
+<p>最後，實體課程一般會有 demo day 以及媒合日，這些最後的作品平台以及課程的口碑在找工作階段時也會令你更容易找到轉職後的工作</p>
+<h3 id="Appworks-School"><a href="#Appworks-School" class="headerlink" title="Appworks School"></a><a href="https://tw.alphacamp.co/">Appworks School</a></h3><p>在搜集台灣 coding bootcamp 資料時，Appworks School 可能算是台灣最具知名度的實體 bootcamp…基本上都是它的課程資訊。AppWorks School 成立於 2016 年，最大的特色是完全免費參加，每期維持約 4 個月(4 周線上學習+16 周台北駐點集訓)。對比其他需要約十多萬學費的課程對經濟的負擔實在是相差太遠。而且在網絡找到的評價都十分不錯。在報名之前 AppWork School 有提供一些基本的學習資源可以作為初步了解 Coding 以及確認對 Coding 的興趣和熱情。這個課程最大的缺點就是錄取率很低，看之前的資料，每屆的錄取率可能只有約 15%。所以在確定報名的時候需要足夠的決心以及學會在報名資料中讓 Appworks School 的人去看到你。如果對 Appworks School 的課程有興趣可以多觀看他們的 Youtube，有一些 Q&amp;A 令你更了解到 Appwork 報名時的資訊</p>
+<h3 id="資策會"><a href="#資策會" class="headerlink" title="資策會"></a>資策會</h3><p>資策會的課程眾多，有全端，前端，Java 等課程，課程約 16 ～ 20 周，上課時間為星期一到五白天也有可能配合導師在晚上或是週末假期上課。費用按不同課程大概在十萬多一點，在網絡上看來也算是滿有口碑的。資策會在台灣各地都有分部，如果不是住在台北希望在離家比較近的地點學習，資策會可能是一個比較多地點的選擇。按課程資料，專題的製作會是課程的一大重點，由個人小專題到團體合作的專題都有，完訓後有履歷的討論，面試技巧的課程以及產業媒合。對比 Appworks School 的課程，沒有看到有提過資策會的課程錄取率問題，所以應該有決心以及財力支持的情況下錄取的機會滿大的</p>
+<h3 id="Build-School"><a href="#Build-School" class="headerlink" title="Build School"></a>Build School</h3><p>Build School 成立於 2016 年，台北及新竹都有開辦課程。創辦人 Dann Wu 是微軟出身，所以在課程設計上及課程講師都與微軟有關連。Build School 課程為 23 週的訓練及實作：1-13 週是基礎教學，14-22 週是專題實作。課程中以作品專案式的學習，著重於「learn how to learn」的能力。學費約為 8-9 萬，Build School 有提出彈性結訓後學費分期方案  <strong>，</strong>一開始付學費約 NTD 37,500，待學員結訓後，再付剩餘的學費以減輕學習的成本。(以上參考金額為 2024 夏季班為標準, 最新資訊請到 Build School 網站)</p>
+<hr>
+<h2 id="線上培訓課程"><a href="#線上培訓課程" class="headerlink" title="線上培訓課程"></a><strong>線上培訓課程</strong></h2><p>如果覺得實體培訓課程的時間成本，經濟成本太高，或是只是想有系統性的兼職學習程式，線上培訓課程也是另一個選擇。對比之下線上培訓課程缺少了一起學習一起面對困難的同伴，也會因為缺乏時間的壓力所以最後也不了了之。但是如果不想全身投入，也有一定的自制力的話線上的課程也是一個選項。線上培訓課程對比免費的資源多了一些助教，社群的機制，在面對困難時還是有一定幫助。當然，現在網絡上也有很多的免費資源，如果是單純想了解 Coding 的知識，在下段內容將會提供一些相關的免費資源學習。</p>
+<h3 id="Alpha-Camp"><a href="#Alpha-Camp" class="headerlink" title="Alpha Camp"></a>Alpha Camp</h3><p>Alpha Camp 是筆者正在使用的課程, AC 的課程為分四階段: 第一階段是四週的程式入門，第二階段為前端開發實作，第三階段是後端開發實作以及第四階段的前&#x2F;後端專修。完成四階段的費用比實體課程稍低一些。課程中有不同的作業以及助教批改評論。AC 課程最大的特色是有一個健全的社群：每周的線上助教 QA 時間，同學的技術討論，每周的 co-working space 與同學一同交流學習分享經驗，定期舉辦的校友分享以及 side project 求職小組的媒合。這些在轉職求職時除了知識以外很重要的資源。</p>
+<h3 id="六角學院"><a href="#六角學院" class="headerlink" title="六角學院"></a>六角學院</h3><p>六角學院的課程以前端為主，分不同的主題課程可以按學生的程度去選擇，課程費用大概 1-3 千不等而前端全組合費用約為 NTD13,950。創辦人之一卡斯伯的部落格內容十分豐富，筆者是先查到卡斯伯的部落格才發現到六角學院。按網上的資料(因為筆者為後端工程師所以沒有詳細了解六角學院的相關資訊)六角學院的課程十分適合培養前端的基礎，對基本觀念的解釋也很清晰，適合作為轉職初階的第一步。</p>
+<h3 id="WeHelp-Bootcamp"><a href="#WeHelp-Bootcamp" class="headerlink" title="WeHelp Bootcamp"></a>WeHelp Bootcamp</h3><p>WeHelp 是由 YouTuber 彭彭的課程 創辦的，在 Youtube 上也有很多免費的課程可以體驗。WeHelp 是在 2021 開辦的。WeHelp 是類似實體課程的模式在 26 週的課程提供作業和專案實作以及畢業後的求職導向模式，主要是線上互動為主但也可以參加在台北的實體活動。課程分三階段:網<strong>站</strong>開發基礎(第一階段)，電商網站實務(第二階段)以及個人專案、求職準備(第三階段)，課程約三至四萬(是否出席實體活動)。根據網站的資料每屆錄取率約百分之三十。在網站上有之前每一屆的專案展示以及招生說明會的紀錄，如果有興趣可以到網站上查看</p>
+<h3 id="Udemy"><a href="#Udemy" class="headerlink" title="Udemy"></a>Udemy</h3><p>Udemy 是一個外國的學習平台，有超級超級超級多課程包括轉職軟體工程師或是不同程式語言主題的課程。因為是外國的平台所以英文課程為主所以比較適合英文一定水平的同學，當然也有部份的中文課程所以也可以在 Udemy 了解。課程約在 NTW2000~4000 範圍之間，但 Udemy 會不定時有優惠可以在數百元的情況下就買到課程，如果不是急上課的話可以等到合適的時機再買節省費用。</p>
+<p>在 Udemy 上比較熱門的課程有<strong>Dr. A</strong>ngela Yu - The Complete 2024 Web Development Bootcamp(超過 125 萬學生)及 Colt Steele - The Web Developer Bootcamp 2024(超過 90 萬學生)</p>
+<p>Dr. Angela Yu 是 Udemy 中其中一位最受歡迎的老師，她的課程還會包括到 Web3, NFT，Crypto。</p>
+<p>Colt Steele 也是一位十分受歡迎的老師，在課程上會比較多練習以及比較基礎的內容。</p>
+<hr>
+<h2 id="免費的線上資源"><a href="#免費的線上資源" class="headerlink" title="免費的線上資源"></a>免費的線上資源</h2><p>現在網絡上的免費資源有很多而且都不乏質量的內容，如果希望以最少的經濟成本去學習，令到這些免費的資源相信都可以去到很好的程度。以下是部分我在學習過程中留意到的資源:</p>
+<h3 id="CS50"><a href="#CS50" class="headerlink" title="CS50"></a>CS50</h3><p>CS50 是哈佛大學的通識課程，是一門在介紹 Computer Science 的課。CS50 在全球是相當知名而且熱門的課程，每年修課人數超過萬人，也是哈佛大學跟 edX 上最多人選修的課程。相信每一個軟工就算沒有認真上過都一定會知道 CS50 的這堂課。CS50 可以在 edX 上免費修讀，如果想要 edX 上的證書則需要 USD219。不過如果完成 CS50 中所有的功課，也可以免費申請 CS50 課程的證書。CS50 課程是是計算機基礎，十分著重計數機及程式後的原理而非語言的應用。因為大部分的 Bootcamp 都是教導程式語言及應用，CS50 的課程則很好的填補了基礎的空白。</p>
+<h3 id="FreeCode-Camp"><a href="#FreeCode-Camp" class="headerlink" title="FreeCode Camp"></a>FreeCode Camp</h3><p>FreeCode Camp (FCC)是一個十分熱門的 Web 開發學習平台，鼓勵 Learning by Doing 的學習方式。前端、後端、數據可視化等幾乎涵蓋所有的 Web 開發知識都有相關的課程，在 YouTube 上也很有多課程。FCC 課程都是以習題式的練習搭配相關語法介紹。每個課程都有小主題，在課程的作業完成後會頒發證書加入自己的履歷或者 Linkedin 去求職。</p>
+<h3 id="YouTube"><a href="#YouTube" class="headerlink" title="YouTube"></a>YouTube</h3><p>在 YouTube 上，有許多知名的程式語言教學頻道，其中包括彭彭的課程、Net Ninja 和 Traversy Media。這些頻道提供了豐富多樣的程式開發相關內容，涵蓋了從基礎到高級的各種主題。</p>
+<p>首先，彭彭的課程的內容深入但易於理解。他的課程涵蓋了多種前後端的程式語言，框架，並通過不同的教學來幫助學生深入理解。無論您是初學者還是有一定程式開發經驗，都能在彭彭的課程中找到適合自己的內容。</p>
+<p>其次，Net Ninja 提供了豐富的前端開發相關教學。從 HTML、CSS 到 JavaScript，再到 React 和 Vue 等前端框架再到 MongoDB 和 MySQL 等，Net Ninja 的課程涵蓋了前後端開發的各個方面。他的教學風格清晰明了，並且經常以實例演示來加深學生的理解。</p>
+<p>最後，Traversy Media 也是涵蓋了廣泛的主題，包括前端、後端和全端開發，以及各種程式語言和框架的教學。Traversy Media 的教學內容豐富，並且注重實用性和實戰應用，對於想要快速入門並掌握實用技能的學生來說是一個不可多得的資源。</p>
+<p>總的來說，在 YouTube 上有許多優質的程式開發相關教學頻道，彭彭的課程、Net Ninja 和 Traversy Media 僅僅是其中的幾個代表。</p>
+<hr>
+<h2 id="總結，所以應該怎樣去學習程式"><a href="#總結，所以應該怎樣去學習程式" class="headerlink" title="總結，所以應該怎樣去學習程式?"></a><strong>總結，所以應該怎樣去學習程式?</strong></h2><p>總結來看，學習程式開發是一項需要不斷學習和實踐的過程。無論您選擇哪種學習途徑，都應該考慮以下幾點：</p>
+<p>首先，了解自己的學習風格和目標。每個人的學習方式和目標都不同，有些人喜歡通過閱讀書籍學習，有些人則更喜歡通過觀看視頻或參加實際項目來學習。同時，您也應該明確自己的學習目標，是想要轉行成為一名專業的軟體工程師，還是只是想要獲得一些基礎知識。</p>
+<p>其次，選擇合適的學習資源。根據自己的學習風格和目標，選擇適合自己的學習途徑和資源是至關重要的。您可以選擇參加實體培訓課程，如 Bootcamp 或實體課程，也可以選擇在線培訓課程，如 Alpha Camp 或 Udemy，還可以通過免費的線上資源，如 CS50 和 FreeCode Camp 來學習。</p>
+<p>再者，堅持不懈地學習和實踐。學習程式開發是一項需要持之以恆的過程，您需要不斷地學習新知識，並通過實際項目來應用這些知識。在學習的過程中可能會遇到困難和挫折，但是只要堅持不懈地努力，最終一定能夠取得成功。</p>
+<p>最後，不斷地更新和提升自己的技能。隨著科技的不斷發展和變化，程式開發領域也在不斷地變化和演進。因此，作為一名程式開發者，您應該保持開放的心態，不斷地學習新知識和技能，並不斷地提升自己的能力，以應對未來的挑戰和機遇。</p>
+<p>總的來說，學習程式開發是一項充滿挑戰但也充滿樂趣的過程。通過適合自己的學習途徑和資源，堅持不懈地學習和實踐，以及不斷地更新和提升自己的技能，您一定能夠成為一名優秀的軟體工程師，並在這個領域中取得成功。</p>
 ]]></content>
+      <categories>
+        <category>學習辦法</category>
+      </categories>
+      <tags>
+        <tag>轉職軟體工程師</tag>
+        <tag>學習平台</tag>
+      </tags>
   </entry>
 </search>
