@@ -37,7 +37,7 @@
 <meta property="og:description" content="本文深入介紹了 JavaScript 變數，從定義和初始化到 let 關鍵字的應用。我們了解了變數在程式中的重要性，以及它們如何存儲值並處理動態內容。透過示例和說明，讀者能夠更清晰地理解 JavaScript 變數的概念和使用方式。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-06T14:41:15.000Z">
-<meta property="article:modified_time" content="2024-06-06T14:54:20.745Z">
+<meta property="article:modified_time" content="2024-06-06T14:57:14.988Z">
 <meta property="article:author" content="Donald Wong">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="AlphaCamp_Notes">
@@ -238,7 +238,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-06-06 22:41:15 / Modified: 22:54:20" itemprop="dateCreated datePublished" datetime="2024-06-06T22:41:15+08:00">2024-06-06</time>
+              <time title="Created: 2024-06-06 22:41:15 / Modified: 22:57:14" itemprop="dateCreated datePublished" datetime="2024-06-06T22:41:15+08:00">2024-06-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,8 +272,6 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title function_">prompt</span>(<span class="string">&quot;What is your name?&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (name === <span class="string">&quot;Adam&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Hello Adam, nice to see you!&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&quot;Alan&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Hello Alan, nice to see you!&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&quot;Bella&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Hello Bella, nice to see you!&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&quot;Bianca&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Hello Bianca, nice to see you!&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&quot;Chris&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Hello Chris, nice to see you!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>這樣做顯然是低效的。如果我們沒有變數，我們就不得不寫大量的代碼來檢查輸入的名字，然後顯示相應名稱的消息。使用變數是更明智的選擇。</p>
-<span id="more"></span>
-
 <h2 id="變數的其他特性"><a href="#變數的其他特性" class="headerlink" title="變數的其他特性"></a><strong>變數的其他特性</strong></h2><p>變數能夠存儲任何東西，不僅是字串和數字，還可以存儲更複雜的數據，甚至是函數。</p>
 <h2 id="定義變數"><a href="#定義變數" class="headerlink" title="定義變數"></a><strong>定義變數</strong></h2><p>要使用變數，首先需要定義它。語法是在關鍵字 <strong><code>var</code></strong> 或 <strong><code>let</code></strong> 之後加上變數的名字：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName;</span><br><span class="line"><span class="keyword">let</span> myAge;</span><br></pre></td></tr></table></figure>
