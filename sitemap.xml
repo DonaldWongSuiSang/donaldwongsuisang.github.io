@@ -76,10 +76,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://donaldwongsuisang.github.io/tags/AlphaCamp-Notes/</loc>
+    <lastmod>2024-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://donaldwongsuisang.github.io/categories/%E5%AD%B8%E7%BF%92%E8%BE%A6%E6%B3%95/</loc>
+    <lastmod>2024-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://donaldwongsuisang.github.io/categories/JavaScript/</loc>
     <lastmod>2024-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
