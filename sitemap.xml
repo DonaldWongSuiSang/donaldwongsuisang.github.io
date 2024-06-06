@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://donaldwongsuisang.github.io/2024/060621831.html</loc>
+    
+    <lastmod>2024-06-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://donaldwongsuisang.github.io/2024/051410000.html</loc>
     
     <lastmod>2024-06-05</lastmod>
@@ -55,6 +64,13 @@
   
   <url>
     <loc>https://donaldwongsuisang.github.io/tags/%E5%AD%B8%E7%BF%92%E5%B9%B3%E5%8F%B0/</loc>
+    <lastmod>2024-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://donaldwongsuisang.github.io/tags/JavaScript/</loc>
     <lastmod>2024-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

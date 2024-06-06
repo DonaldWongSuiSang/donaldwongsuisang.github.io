@@ -45,4 +45,62 @@
         <tag>學習平台</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Javascript的基本介紹</title>
+    <url>/2024/060621831.html</url>
+    <content><![CDATA[<p>頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript。</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a> 是一種標記語言，我們使用它組織網頁裡的內容並給予不同層次的定義， 例如：主副標題、資料表格，連結或是嵌入圖片和影片。</li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/CSS">CSS</a> 是一種樣式規則的語言，用來幫 HTML 內容上套用樣式，例如：設置背景顏色、字型，或讓內容以多欄的方式呈現。</li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/JavaScript">JavaScript</a> 是一種腳本語言，它能夠動態更新內容、控制多媒體、動畫……幾乎所有原始網站上的互動都是透過JavaScript來控制。</li>
+</ul>
+<p>網頁透過HTML及CSS結構化，做成希望的視覺呈現方式，再藉由JavaScript，加入動態效果並與使用者互動，就是組成網站的元素。</p>
+<p>暫時在此只討論JavaScript，HTML及CSS將會在其後繼續討論。在Stack Overflow 的調查中，在2023年中最受歡迎的程序語言就是JavaScirpt，原因在於除了前端工程師會使用JavaScirpt外，在Node.js的執行環境協助下，JavaScript也可以用到後端開發的應用上，使得工程師只需懂得一個語言，就可以應用到前後端的工程上，可算是CP值十分高，也受到工程師們歡迎。當然還有其他如開放的標準和龐大的討論社區，穩定的框架和靈活性等都令JavaScript的工程師連結加深</p>
+<h2 id="網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript"><a href="#網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript" class="headerlink" title="網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript"></a><strong>網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript</strong></h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a><strong>HTML</strong></h3><p><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a> 是一種標記語言，我們使用它組織網頁裡的內容並給予不同層次的定義，例如：主副標題、資料表格，連結或是嵌入圖片和影片。</p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a><strong>CSS</strong></h3><p><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/CSS">CSS</a> 是一種樣式規則的語言，用來幫 HTML 內容上套用樣式，例如：設置背景顏色、字型，或讓內容以多欄的方式呈現。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a><strong>JavaScript</strong></h3><p><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/JavaScript">JavaScript</a> 是一種腳本語言，它能夠動態更新內容、控制多媒體、動畫……幾乎所有原始網站上的互動都是透過JavaScript來控制。</p>
+<p>網頁透過HTML及CSS結構化，做成希望的視覺呈現方式，再藉由JavaScript，加入動態效果並與使用者互動，就是組成網站的元素。</p>
+<p>暫時在此只討論JavaScript，HTML及CSS將會在其後繼續討論。在 Stack Overflow 的調查中，在2023年中最受歡迎的程序語言就是JavaScript，原因在於除了前端工程師會使用JavaScript外，在Node.js的執行環境協助下，JavaScript也可以用到後端開發的應用上，使得工程師只需懂得一個語言，就可以應用到前後端的工程上，可算是CP值十分高，也受到工程師們歡迎。當然還有其他如開放的標準和龐大的討論社區，穩定的框架和靈活性等都令JavaScript的工程師連結加深。</p>
+<hr>
+<h2 id="JavaScript-核心概念"><a href="#JavaScript-核心概念" class="headerlink" title="JavaScript 核心概念"></a><strong>JavaScript 核心概念</strong></h2><h3 id="變數和資料型別"><a href="#變數和資料型別" class="headerlink" title="變數和資料型別"></a><strong>變數和資料型別</strong></h3><p>JavaScript 支援多種資料型別，包括數字、字串、布林、陣列和物件。宣告變數時，可以使用 <strong><code>var</code><strong>、</strong><code>let</code></strong> 或 **<code>const</code>**：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;John&quot;</span>; <span class="comment">// 字串</span></span><br><span class="line"><span class="keyword">const</span> age = <span class="number">30</span>;    <span class="comment">// 數字</span></span><br><span class="line"><span class="keyword">var</span> isStudent = <span class="literal">true</span>; <span class="comment">// 布林</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="函式"><a href="#函式" class="headerlink" title="函式"></a><strong>函式</strong></h3><p>函式是 JavaScript 的基本單位，用於封裝可重用的邏輯：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, World!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">greet</span>(); <span class="comment">// 呼叫函式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="物件和陣列"><a href="#物件和陣列" class="headerlink" title="物件和陣列"></a><strong>物件和陣列</strong></h3><p>物件和陣列是 JavaScript 中常用的資料結構：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="事件處理"><a href="#事件處理" class="headerlink" title="事件處理"></a><strong>事件處理</strong></h3><p>JavaScript 可以監聽和回應用戶的行為，例如點擊按鈕或提交表單：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myButton&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Button clicked!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="JavaScript-應用場景"><a href="#JavaScript-應用場景" class="headerlink" title="JavaScript 應用場景"></a><strong>JavaScript 應用場景</strong></h2><h3 id="前端開發"><a href="#前端開發" class="headerlink" title="前端開發"></a><strong>前端開發</strong></h3><p>在前端開發中，JavaScript 與 HTML 和 CSS 一起使用，構建互動且動態的網頁。常見的框架和庫包括 <a href="https://reactjs.org/">React</a>、<a href="https://angular.io/">Angular</a> 和 <a href="https://vuejs.org/">Vue.js</a>。</p>
+<h3 id="後端開發"><a href="#後端開發" class="headerlink" title="後端開發"></a><strong>後端開發</strong></h3><p>借助 <a href="https://nodejs.org/">Node.js</a>，JavaScript 能夠在伺服器端執行，處理請求和資料庫操作。例如，使用 <a href="https://expressjs.com/">Express</a> 框架可以快速搭建 Web 應用：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;Hello, World!&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running on port 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="全端開發"><a href="#全端開發" class="headerlink" title="全端開發"></a><strong>全端開發</strong></h3><p>JavaScript 的全端特性使開發人員能夠在前後端之間無縫切換。全端框架如 <a href="https://nextjs.org/">Next.js</a> 和 <a href="https://nuxtjs.org/">Nuxt.js</a> 提供了強大的工具來構建完整的應用。</p>
+<h3 id="移動應用開發"><a href="#移動應用開發" class="headerlink" title="移動應用開發"></a><strong>移動應用開發</strong></h3><p>JavaScript 也能用於開發跨平台的移動應用，例如使用 <a href="https://reactnative.dev/">React Native</a> 或 <a href="https://ionicframework.com/">Ionic</a>：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Text</span>, <span class="title class_">View</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Text</span>&gt;</span>Hello, mobile world!<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他應用"><a href="#其他應用" class="headerlink" title="其他應用"></a><strong>其他應用</strong></h3><p>除了以上應用場景，JavaScript 還能用於物聯網（IoT）、遊戲開發和機器學習等領域。開源社區提供了大量的庫和框架，幫助開發人員實現各種創新應用。</p>
+<hr>
+<h2 id="學習資源和實踐"><a href="#學習資源和實踐" class="headerlink" title="學習資源和實踐"></a><strong>學習資源和實踐</strong></h2><p>學習 JavaScript 最好的方法是通過實踐來鞏固知識。以下是一些推薦的學習資源和實踐方法：</p>
+<h3 id="線上資源"><a href="#線上資源" class="headerlink" title="線上資源"></a><strong>線上資源</strong></h3><ul>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">MDN Web Docs</a>: 詳細的 JavaScript 文件和範例。</li>
+<li><a href="https://javascript.info/">JavaScript.info</a>: 深入淺出的 JavaScript 教程。</li>
+<li>Codecademy: 互動式的 JavaScript 課程。</li>
+</ul>
+<h3 id="實作專案"><a href="#實作專案" class="headerlink" title="實作專案"></a><strong>實作專案</strong></h3><ul>
+<li>建立一個個人網站，使用 JavaScript 添加互動功能。</li>
+<li>開發一個簡單的單頁應用（SPA），例如待辦事項清單。</li>
+<li>嘗試構建一個後端 API，並使用前端應用進行資料交換。</li>
+</ul>
+<hr>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a><strong>總結</strong></h2><p>JavaScript 作為一門靈活且功能強大的語言，在前後端開發中都有廣泛應用。通過學習和實踐，掌握 JavaScript 的核心概念和應用場景，你將能夠構建功能強大且具有互動性的應用。接下來的內容，我們將深入探討 HTML 和 CSS，幫助你全面掌握網頁技術。</p>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>
