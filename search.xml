@@ -140,7 +140,11 @@
 <h2 id="更新變數"><a href="#更新變數" class="headerlink" title="更新變數"></a><strong>更新變數</strong></h2><p>一旦變數初始化後，可以更改其值：</p>
 <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">myName = <span class="string">&quot;Bob&quot;</span>;</span><br><span class="line">myAge = <span class="number">40</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="變數命名規則"><a href="#變數命名規則" class="headerlink" title="變數命名規則"></a><strong>變數命名規則</strong></h2><p>變數名稱應該直觀且描述其所包含的數據。不要使用單個字母或數字，也不要使用 JavaScript 保留字。</p>
+<h2 id="變數命名規則"><a href="#變數命名規則" class="headerlink" title="變數命名規則"></a><strong>變數命名規則</strong></h2><h3 id="不能使用JavaScript保留字"><a href="#不能使用JavaScript保留字" class="headerlink" title="不能使用JavaScript保留字"></a><strong>不能使用JavaScript保留字</strong></h3><p>應避免使用JavaScript中已經具有特定意義的保留字作為變數名稱，這些關鍵字包括return、true、break和function等。使用這些保留字可能導致代碼出現意料之外的行為，並增加代碼的理解難度。</p>
+<h3 id="不能以數字開頭"><a href="#不能以數字開頭" class="headerlink" title="不能以數字開頭"></a><strong>不能以數字開頭</strong></h3><p>變數名稱不能以數字開頭，否則將導致語法錯誤。例如，變數名稱myNumber1是合法的，但1myNumber將被JavaScript解析器視為無效標識符。</p>
+<h3 id="特殊符號"><a href="#特殊符號" class="headerlink" title="特殊符號"></a><strong>特殊符號</strong></h3><p>在JavaScript中，可以使用錢符$或底線_作為變數名稱的首字母，例如$myNumber或_myNumber。這些符號在特定場景下有約定俗成的使用方式，但若無特殊需求，建議儘量避免使用，以確保代碼的可讀性和一致性。</p>
+<h3 id="區分大小寫"><a href="#區分大小寫" class="headerlink" title="區分大小寫"></a><strong>區分大小寫</strong></h3><p>JavaScript是區分大小寫的語言，因此變數名稱的大小寫會影響其識別度。例如，MyNumber和myNumber將被視為兩個不同的變數。</p>
+<h3 id="組合字採用camelCase命名法"><a href="#組合字採用camelCase命名法" class="headerlink" title="組合字採用camelCase命名法"></a><strong>組合字採用camelCase命名法</strong></h3><p>在JavaScript中，推薦使用駝峰命名法（camel case）來命名變數，即將第一個單詞的首字母小寫，後續每個單詞的首字母大寫，如myNumber。雖然也可以使用蛇形命名法（snake_case），但為了與常見的慣例保持一致性，建議採用駝峰命名法。值得注意的是，在JavaScript中不支持CSS中的烤肉串命名法（kebab-case）。</p>
 <h2 id="變數資料類型"><a href="#變數資料類型" class="headerlink" title="變數資料類型"></a><strong>變數資料類型</strong></h2><p>JavaScript 支持多種資料類型，包括：</p>
 <ul>
 <li>數字 (Numbers)</li>
