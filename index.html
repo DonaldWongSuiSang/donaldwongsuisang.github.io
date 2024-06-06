@@ -207,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://donaldwongsuisang.github.io/2024/060621831.html">
+    <link itemprop="mainEntityOfPage" href="https://donaldwongsuisang.github.io/2024/060610507.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -221,7 +221,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/060621831.html" class="post-title-link" itemprop="url">Javascript的基本介紹</a>
+            <a href="/2024/060610507.html" class="post-title-link" itemprop="url">深入理解 JavaScript的變數</a>
         </h2>
 
         <div class="post-meta">
@@ -232,8 +232,125 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-06-06 22:12:36 / Modified: 22:15:06" itemprop="dateCreated datePublished" datetime="2024-06-06T22:12:36+08:00">2024-06-06</time>
+              <time title="Created: 2024-06-06 22:41:15 / Modified: 22:43:08" itemprop="dateCreated datePublished" datetime="2024-06-06T22:41:15+08:00">2024-06-06</time>
             </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="什麼是變數？"><a href="#什麼是變數？" class="headerlink" title="什麼是變數？"></a><strong>什麼是變數？</strong></h2><p>變數是值的容器，例如數字、字串等。變數的特殊之處在於它們包含的值可以改變。我們來看一個簡單的例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>請按我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> button = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;button&quot;</span>);</span><br><span class="line"></span><br><span class="line">button.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="title function_">prompt</span>(<span class="string">&quot;你叫什麼名字?&quot;</span>);</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;你好 &quot;</span> + name + <span class="string">&quot;, 很高興認識你!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在這個示例中，按下按鈕會運行幾行代碼。第一行要求讀者輸入其名稱，然後將值存儲在變數中。第二行顯示包含變數值的歡迎消息。</p>
+<h2 id="為什麼使用變數？"><a href="#為什麼使用變數？" class="headerlink" title="為什麼使用變數？"></a><strong>為什麼使用變數？</strong></h2><p>如果不使用變數，程式碼會變得冗長且低效。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title function_">prompt</span>(<span class="string">&#x27;What is your name?&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (name === <span class="string">&#x27;Adam&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Adam, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Alan&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Alan, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Bella&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Bella, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Bianca&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Bianca, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Chris&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Chris, nice to see you!&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這樣做顯然是低效的。如果我們沒有變數，我們就不得不寫大量的代碼來檢查輸入的名字，然後顯示相應名稱的消息。使用變數是更明智的選擇。</p>
+<h2 id="變數的其他特性"><a href="#變數的其他特性" class="headerlink" title="變數的其他特性"></a><strong>變數的其他特性</strong></h2><p>變數能夠存儲任何東西，不僅是字串和數字，還可以存儲更複雜的數據，甚至是函數。</p>
+<h2 id="定義變數"><a href="#定義變數" class="headerlink" title="定義變數"></a><strong>定義變數</strong></h2><p>要使用變數，首先需要定義它。語法是在關鍵字 <strong><code>var</code></strong> 或 <strong><code>let</code></strong> 之後加上變數的名字：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName;</span><br><span class="line"><span class="keyword">let</span> myAge;</span><br></pre></td></tr></table></figure>
+
+<p>這裡定義了兩個變數 <strong><code>myName</code></strong> 和 **<code>myAge</code>**。您可以在瀏覽器終端中輸入這些代碼，並使用自己選擇的名稱來創建一兩個變數。</p>
+<h2 id="初始化變數"><a href="#初始化變數" class="headerlink" title="初始化變數"></a><strong>初始化變數</strong></h2><p>一旦定義了變數，就能夠初始化它來儲存數值。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myName = <span class="string">&quot;Chris&quot;</span>;</span><br><span class="line">myAge = <span class="number">37</span>;</span><br></pre></td></tr></table></figure>
+
+<p>您也可以同時定義並初始化變數：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myDog = <span class="string">&quot;Rover&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="比較-var-和-let-的不同"><a href="#比較-var-和-let-的不同" class="headerlink" title="比較 var 和 let 的不同"></a><strong>比較 <code>var</code> 和 <code>let</code> 的不同</strong></h2><p><strong><code>var</code></strong> 和 <strong><code>let</code></strong> 有一些重要的區別。**<code>let</code>** 在現代 JavaScript 中被引入，以修復 <strong><code>var</code></strong> 的一些問題。以下是幾個簡單的區別：</p>
+<ul>
+<li>Hoisting：**<code>var</code>** 會進行提升，而 <strong><code>let</code></strong> 不會。</li>
+<li>重複定義：**<code>var</code>** 可以多次定義同一變數，而 <strong><code>let</code></strong> 不可以。</li>
+</ul>
+<p>總結: 盡量使用 <strong><code>let</code></strong> 而不是 **<code>var</code>**，除非需要支持舊版 Internet Explorer。</p>
+<h2 id="更新變數"><a href="#更新變數" class="headerlink" title="更新變數"></a><strong>更新變數</strong></h2><p>一旦變數初始化後，可以更改其值：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myName = <span class="string">&quot;Bob&quot;</span>;</span><br><span class="line">myAge = <span class="number">40</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="變數命名規則"><a href="#變數命名規則" class="headerlink" title="變數命名規則"></a><strong>變數命名規則</strong></h2><p>變數名稱應該直觀且描述其所包含的數據。不要使用單個字母或數字，也不要使用 JavaScript 保留字。</p>
+<h2 id="變數資料類型"><a href="#變數資料類型" class="headerlink" title="變數資料類型"></a><strong>變數資料類型</strong></h2><p>JavaScript 支持多種資料類型，包括：</p>
+<ul>
+<li>數字 (Numbers)</li>
+<li>字串 (Strings)</li>
+<li>布林值 (Booleans)</li>
+<li>陣列 (Arrays)</li>
+<li>物件 (Objects)</li>
+</ul>
+<p>JavaScript 是一個動態型別語言，不需要在宣告變數時指定資料類型。</p>
+<h2 id="常數"><a href="#常數" class="headerlink" title="常數"></a><strong>常數</strong></h2><p>常數使用 <strong><code>const</code></strong> 關鍵字定義。一經定義，常數的值就不能改變：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> daysInWeek = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> hoursInDay = <span class="number">24</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a><strong>總結</strong></h2><p>本文深入探討了 JavaScript 中的變數，從定義和初始化到不同於 <strong><code>var</code></strong> 的 <strong><code>let</code></strong> 關鍵字的使用方式。我們理解了變數的重要性，它們是存儲值的容器，使我們能夠編寫更簡潔、易於理解的程式碼。透過實際示例，我們看到了如何使用變數來處理輸入並生成動態內容。最後，我們探討了變數的命名規則、資料類型以及如何使用常數。掌握這些概念將打下堅實的 JavaScript 基礎，為更深入的學習更容易理解。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://donaldwongsuisang.github.io/2024/060521831.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Donald Wong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Donald's Learning log">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/060521831.html" class="post-title-link" itemprop="url">Javascript的基本介紹</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-06-05 22:12:36" itemprop="dateCreated datePublished" datetime="2024-06-05T22:12:36+08:00">2024-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-06-06 22:42:53" itemprop="dateModified" datetime="2024-06-06T22:42:53+08:00">2024-06-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -494,7 +611,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
