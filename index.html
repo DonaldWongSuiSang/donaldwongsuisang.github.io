@@ -232,7 +232,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-06-06 22:41:15 / Modified: 22:49:52" itemprop="dateCreated datePublished" datetime="2024-06-06T22:41:15+08:00">2024-06-06</time>
+              <time title="Created: 2024-06-06 22:41:15 / Modified: 22:54:20" itemprop="dateCreated datePublished" datetime="2024-06-06T22:41:15+08:00">2024-06-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,55 +255,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="什麼是變數？"><a href="#什麼是變數？" class="headerlink" title="什麼是變數？"></a><strong>什麼是變數？</strong></h2><p>變數是值的容器，例如數字、字串等。變數的特殊之處在於它們包含的值可以改變。我們來看一個簡單的例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>請按我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> button = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;button&quot;</span>);</span><br><span class="line"></span><br><span class="line">button.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="title function_">prompt</span>(<span class="string">&quot;你叫什麼名字?&quot;</span>);</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;你好 &quot;</span> + name + <span class="string">&quot;, 很高興認識你!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在這個示例中，按下按鈕會運行幾行代碼。第一行要求讀者輸入其名稱，然後將值存儲在變數中。第二行顯示包含變數值的歡迎消息。</p>
-<h2 id="為什麼使用變數？"><a href="#為什麼使用變數？" class="headerlink" title="為什麼使用變數？"></a><strong>為什麼使用變數？</strong></h2><p>如果不使用變數，程式碼會變得冗長且低效。例如：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title function_">prompt</span>(<span class="string">&#x27;What is your name?&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (name === <span class="string">&#x27;Adam&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Adam, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Alan&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Alan, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Bella&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Bella, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Bianca&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Bianca, nice to see you!&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (name === <span class="string">&#x27;Chris&#x27;</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&#x27;Hello Chris, nice to see you!&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>這樣做顯然是低效的。如果我們沒有變數，我們就不得不寫大量的代碼來檢查輸入的名字，然後顯示相應名稱的消息。使用變數是更明智的選擇。</p>
-<h2 id="變數的其他特性"><a href="#變數的其他特性" class="headerlink" title="變數的其他特性"></a><strong>變數的其他特性</strong></h2><p>變數能夠存儲任何東西，不僅是字串和數字，還可以存儲更複雜的數據，甚至是函數。</p>
-<h2 id="定義變數"><a href="#定義變數" class="headerlink" title="定義變數"></a><strong>定義變數</strong></h2><p>要使用變數，首先需要定義它。語法是在關鍵字 <strong><code>var</code></strong> 或 <strong><code>let</code></strong> 之後加上變數的名字：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName;</span><br><span class="line"><span class="keyword">let</span> myAge;</span><br></pre></td></tr></table></figure>
-
-<p>這裡定義了兩個變數 <strong><code>myName</code></strong> 和 **<code>myAge</code>**。您可以在瀏覽器終端中輸入這些代碼，並使用自己選擇的名稱來創建一兩個變數。</p>
-<h2 id="初始化變數"><a href="#初始化變數" class="headerlink" title="初始化變數"></a><strong>初始化變數</strong></h2><p>一旦定義了變數，就能夠初始化它來儲存數值。例如：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myName = <span class="string">&quot;Chris&quot;</span>;</span><br><span class="line">myAge = <span class="number">37</span>;</span><br></pre></td></tr></table></figure>
-
-<p>您也可以同時定義並初始化變數：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myDog = <span class="string">&quot;Rover&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="比較-var-和-let-的不同"><a href="#比較-var-和-let-的不同" class="headerlink" title="比較 var 和 let 的不同"></a><strong>比較 <code>var</code> 和 <code>let</code> 的不同</strong></h2><p><strong><code>var</code></strong> 和 <strong><code>let</code></strong> 有一些重要的區別。**<code>let</code>** 在現代 JavaScript 中被引入，以修復 <strong><code>var</code></strong> 的一些問題。以下是幾個簡單的區別：</p>
-<ul>
-<li>Hoisting：**<code>var</code>** 會進行提升，而 <strong><code>let</code></strong> 不會。</li>
-<li>重複定義：**<code>var</code>** 可以多次定義同一變數，而 <strong><code>let</code></strong> 不可以。</li>
-</ul>
-<p>總結: 盡量使用 <strong><code>let</code></strong> 而不是 **<code>var</code>**，除非需要支持舊版 Internet Explorer。</p>
-<h2 id="更新變數"><a href="#更新變數" class="headerlink" title="更新變數"></a><strong>更新變數</strong></h2><p>一旦變數初始化後，可以更改其值：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myName = <span class="string">&quot;Bob&quot;</span>;</span><br><span class="line">myAge = <span class="number">40</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="變數命名規則"><a href="#變數命名規則" class="headerlink" title="變數命名規則"></a><strong>變數命名規則</strong></h2><h3 id="不能使用JavaScript保留字"><a href="#不能使用JavaScript保留字" class="headerlink" title="不能使用JavaScript保留字"></a><strong>不能使用JavaScript保留字</strong></h3><p>應避免使用JavaScript中已經具有特定意義的保留字作為變數名稱，這些關鍵字包括return、true、break和function等。使用這些保留字可能導致代碼出現意料之外的行為，並增加代碼的理解難度。</p>
-<h3 id="不能以數字開頭"><a href="#不能以數字開頭" class="headerlink" title="不能以數字開頭"></a><strong>不能以數字開頭</strong></h3><p>變數名稱不能以數字開頭，否則將導致語法錯誤。例如，變數名稱myNumber1是合法的，但1myNumber將被JavaScript解析器視為無效標識符。</p>
-<h3 id="特殊符號"><a href="#特殊符號" class="headerlink" title="特殊符號"></a><strong>特殊符號</strong></h3><p>在JavaScript中，可以使用錢符$或底線_作為變數名稱的首字母，例如$myNumber或_myNumber。這些符號在特定場景下有約定俗成的使用方式，但若無特殊需求，建議儘量避免使用，以確保代碼的可讀性和一致性。</p>
-<h3 id="區分大小寫"><a href="#區分大小寫" class="headerlink" title="區分大小寫"></a><strong>區分大小寫</strong></h3><p>JavaScript是區分大小寫的語言，因此變數名稱的大小寫會影響其識別度。例如，MyNumber和myNumber將被視為兩個不同的變數。</p>
-<h3 id="組合字採用camelCase命名法"><a href="#組合字採用camelCase命名法" class="headerlink" title="組合字採用camelCase命名法"></a><strong>組合字採用camelCase命名法</strong></h3><p>在JavaScript中，推薦使用駝峰命名法（camel case）來命名變數，即將第一個單詞的首字母小寫，後續每個單詞的首字母大寫，如myNumber。雖然也可以使用蛇形命名法（snake_case），但為了與常見的慣例保持一致性，建議採用駝峰命名法。值得注意的是，在JavaScript中不支持CSS中的烤肉串命名法（kebab-case）。</p>
-<h2 id="變數資料類型"><a href="#變數資料類型" class="headerlink" title="變數資料類型"></a><strong>變數資料類型</strong></h2><p>JavaScript 支持多種資料類型，包括：</p>
-<ul>
-<li>數字 (Numbers)</li>
-<li>字串 (Strings)</li>
-<li>布林值 (Booleans)</li>
-<li>陣列 (Arrays)</li>
-<li>物件 (Objects)</li>
-</ul>
-<p>JavaScript 是一個動態型別語言，不需要在宣告變數時指定資料類型。</p>
-<h2 id="常數"><a href="#常數" class="headerlink" title="常數"></a><strong>常數</strong></h2><p>常數使用 <strong><code>const</code></strong> 關鍵字定義。一經定義，常數的值就不能改變：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> daysInWeek = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> hoursInDay = <span class="number">24</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a><strong>總結</strong></h2><p>本文深入探討了 JavaScript 中的變數，從定義和初始化到不同於 <strong><code>var</code></strong> 的 <strong><code>let</code></strong> 關鍵字的使用方式。我們理解了變數的重要性，它們是存儲值的容器，使我們能夠編寫更簡潔、易於理解的程式碼。透過實際示例，我們看到了如何使用變數來處理輸入並生成動態內容。最後，我們探討了變數的命名規則、資料類型以及如何使用常數。掌握這些概念將打下堅實的 JavaScript 基礎，為更深入的學習更容易理解。</p>
-
+          <p>本文深入介紹了 JavaScript 變數，從定義和初始化到 let 關鍵字的應用。我們了解了變數在程式中的重要性，以及它們如何存儲值並處理動態內容。透過示例和說明，讀者能夠更清晰地理解 JavaScript 變數的概念和使用方式。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/060610507.html">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -353,7 +313,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-06-06 22:42:53" itemprop="dateModified" datetime="2024-06-06T22:42:53+08:00">2024-06-06</time>
+                <time title="Modified: 2024-06-06 22:56:44" itemprop="dateModified" datetime="2024-06-06T22:56:44+08:00">2024-06-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -376,57 +336,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a> 是一種標記語言，我們使用它組織網頁裡的內容並給予不同層次的定義， 例如：主副標題、資料表格，連結或是嵌入圖片和影片。</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/CSS">CSS</a> 是一種樣式規則的語言，用來幫 HTML 內容上套用樣式，例如：設置背景顏色、字型，或讓內容以多欄的方式呈現。</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/JavaScript">JavaScript</a> 是一種腳本語言，它能夠動態更新內容、控制多媒體、動畫……幾乎所有原始網站上的互動都是透過JavaScript來控制。</li>
-</ul>
-<p>網頁透過HTML及CSS結構化，做成希望的視覺呈現方式，再藉由JavaScript，加入動態效果並與使用者互動，就是組成網站的元素。</p>
-<p>暫時在此只討論JavaScript，HTML及CSS將會在其後繼續討論。在Stack Overflow 的調查中，在2023年中最受歡迎的程序語言就是JavaScirpt，原因在於除了前端工程師會使用JavaScirpt外，在Node.js的執行環境協助下，JavaScript也可以用到後端開發的應用上，使得工程師只需懂得一個語言，就可以應用到前後端的工程上，可算是CP值十分高，也受到工程師們歡迎。當然還有其他如開放的標準和龐大的討論社區，穩定的框架和靈活性等都令JavaScript的工程師連結加深</p>
-<h2 id="網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript"><a href="#網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript" class="headerlink" title="網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript"></a><strong>網頁標準網頁技術由三大語言構成：HTML、CSS、JavaScript</strong></h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a><strong>HTML</strong></h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/HTML">HTML</a> 是一種標記語言，我們使用它組織網頁裡的內容並給予不同層次的定義，例如：主副標題、資料表格，連結或是嵌入圖片和影片。</p>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a><strong>CSS</strong></h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/CSS">CSS</a> 是一種樣式規則的語言，用來幫 HTML 內容上套用樣式，例如：設置背景顏色、字型，或讓內容以多欄的方式呈現。</p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a><strong>JavaScript</strong></h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/JavaScript">JavaScript</a> 是一種腳本語言，它能夠動態更新內容、控制多媒體、動畫……幾乎所有原始網站上的互動都是透過JavaScript來控制。</p>
-<p>網頁透過HTML及CSS結構化，做成希望的視覺呈現方式，再藉由JavaScript，加入動態效果並與使用者互動，就是組成網站的元素。</p>
-<p>暫時在此只討論JavaScript，HTML及CSS將會在其後繼續討論。在 Stack Overflow 的調查中，在2023年中最受歡迎的程序語言就是JavaScript，原因在於除了前端工程師會使用JavaScript外，在Node.js的執行環境協助下，JavaScript也可以用到後端開發的應用上，使得工程師只需懂得一個語言，就可以應用到前後端的工程上，可算是CP值十分高，也受到工程師們歡迎。當然還有其他如開放的標準和龐大的討論社區，穩定的框架和靈活性等都令JavaScript的工程師連結加深。</p>
-<hr>
-<h2 id="JavaScript-核心概念"><a href="#JavaScript-核心概念" class="headerlink" title="JavaScript 核心概念"></a><strong>JavaScript 核心概念</strong></h2><h3 id="變數和資料型別"><a href="#變數和資料型別" class="headerlink" title="變數和資料型別"></a><strong>變數和資料型別</strong></h3><p>JavaScript 支援多種資料型別，包括數字、字串、布林、陣列和物件。宣告變數時，可以使用 <strong><code>var</code><strong>、</strong><code>let</code></strong> 或 **<code>const</code>**：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;John&quot;</span>; <span class="comment">// 字串</span></span><br><span class="line"><span class="keyword">const</span> age = <span class="number">30</span>;    <span class="comment">// 數字</span></span><br><span class="line"><span class="keyword">var</span> isStudent = <span class="literal">true</span>; <span class="comment">// 布林</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="函式"><a href="#函式" class="headerlink" title="函式"></a><strong>函式</strong></h3><p>函式是 JavaScript 的基本單位，用於封裝可重用的邏輯：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, World!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">greet</span>(); <span class="comment">// 呼叫函式</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="物件和陣列"><a href="#物件和陣列" class="headerlink" title="物件和陣列"></a><strong>物件和陣列</strong></h3><p>物件和陣列是 JavaScript 中常用的資料結構：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-
-<h3 id="事件處理"><a href="#事件處理" class="headerlink" title="事件處理"></a><strong>事件處理</strong></h3><p>JavaScript 可以監聽和回應用戶的行為，例如點擊按鈕或提交表單：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myButton&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;Button clicked!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="JavaScript-應用場景"><a href="#JavaScript-應用場景" class="headerlink" title="JavaScript 應用場景"></a><strong>JavaScript 應用場景</strong></h2><h3 id="前端開發"><a href="#前端開發" class="headerlink" title="前端開發"></a><strong>前端開發</strong></h3><p>在前端開發中，JavaScript 與 HTML 和 CSS 一起使用，構建互動且動態的網頁。常見的框架和庫包括 <a target="_blank" rel="noopener" href="https://reactjs.org/">React</a>、<a target="_blank" rel="noopener" href="https://angular.io/">Angular</a> 和 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue.js</a>。</p>
-<h3 id="後端開發"><a href="#後端開發" class="headerlink" title="後端開發"></a><strong>後端開發</strong></h3><p>借助 <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a>，JavaScript 能夠在伺服器端執行，處理請求和資料庫操作。例如，使用 <a target="_blank" rel="noopener" href="https://expressjs.com/">Express</a> 框架可以快速搭建 Web 應用：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;Hello, World!&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running on port 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="全端開發"><a href="#全端開發" class="headerlink" title="全端開發"></a><strong>全端開發</strong></h3><p>JavaScript 的全端特性使開發人員能夠在前後端之間無縫切換。全端框架如 <a target="_blank" rel="noopener" href="https://nextjs.org/">Next.js</a> 和 <a target="_blank" rel="noopener" href="https://nuxtjs.org/">Nuxt.js</a> 提供了強大的工具來構建完整的應用。</p>
-<h3 id="移動應用開發"><a href="#移動應用開發" class="headerlink" title="移動應用開發"></a><strong>移動應用開發</strong></h3><p>JavaScript 也能用於開發跨平台的移動應用，例如使用 <a target="_blank" rel="noopener" href="https://reactnative.dev/">React Native</a> 或 <a target="_blank" rel="noopener" href="https://ionicframework.com/">Ionic</a>：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Text</span>, <span class="title class_">View</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Text</span>&gt;</span>Hello, mobile world!<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他應用"><a href="#其他應用" class="headerlink" title="其他應用"></a><strong>其他應用</strong></h3><p>除了以上應用場景，JavaScript 還能用於物聯網（IoT）、遊戲開發和機器學習等領域。開源社區提供了大量的庫和框架，幫助開發人員實現各種創新應用。</p>
-<hr>
-<h2 id="學習資源和實踐"><a href="#學習資源和實踐" class="headerlink" title="學習資源和實踐"></a><strong>學習資源和實踐</strong></h2><p>學習 JavaScript 最好的方法是通過實踐來鞏固知識。以下是一些推薦的學習資源和實踐方法：</p>
-<h3 id="線上資源"><a href="#線上資源" class="headerlink" title="線上資源"></a><strong>線上資源</strong></h3><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">MDN Web Docs</a>: 詳細的 JavaScript 文件和範例。</li>
-<li><a target="_blank" rel="noopener" href="https://javascript.info/">JavaScript.info</a>: 深入淺出的 JavaScript 教程。</li>
-<li>Codecademy: 互動式的 JavaScript 課程。</li>
-</ul>
-<h3 id="實作專案"><a href="#實作專案" class="headerlink" title="實作專案"></a><strong>實作專案</strong></h3><ul>
-<li>建立一個個人網站，使用 JavaScript 添加互動功能。</li>
-<li>開發一個簡單的單頁應用（SPA），例如待辦事項清單。</li>
-<li>嘗試構建一個後端 API，並使用前端應用進行資料交換。</li>
-</ul>
-<hr>
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a><strong>總結</strong></h2><p>JavaScript 作為一門靈活且功能強大的語言，在前後端開發中都有廣泛應用。通過學習和實踐，掌握 JavaScript 的核心概念和應用場景，你將能夠構建功能強大且具有互動性的應用。接下來的內容，我們將深入探討 HTML 和 CSS，幫助你全面掌握網頁技術。</p>
-
+          <p>JavaScript 是現代網頁開發的核心，與 HTML 和 CSS 搭配使用，構建出動態且具互動性的網站。其在前端、後端和全端開發中都扮演著重要的角色，並在各個領域展現了廣泛的應用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/060521831.html">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -476,7 +394,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-06-05 18:36:20" itemprop="dateModified" datetime="2024-06-05T18:36:20+08:00">2024-06-05</time>
+                <time title="Modified: 2024-06-06 22:56:00" itemprop="dateModified" datetime="2024-06-06T22:56:00+08:00">2024-06-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -499,40 +417,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="軟體工程師轉職指南：選擇最佳學習路徑"><a href="#軟體工程師轉職指南：選擇最佳學習路徑" class="headerlink" title="軟體工程師轉職指南：選擇最佳學習路徑"></a><strong>軟體工程師轉職指南：選擇最佳學習路徑</strong></h1><p>轉職軟體工程師就像開啟一場新的冒險，最先要面對的挑戰就是如何挑選對的學習管道。這方面選擇眾多，免費的 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=AppWorks+School">AppWorks School</a>，地區眾多的<a target="_blank" rel="noopener" href="https://www.iii.org.tw/">資策會</a>，和由 Youtuber**<a target="_blank" rel="noopener" href="https://www.youtube.com/@cwpeng-course">彭彭的課程</a>創立的** <a target="_blank" rel="noopener" href="https://www.google.com/search?q=WeHelp+Bootcamp">WeHelp Bootcamp</a> 等實體課程，或 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=Alpha+Camp">Alpha Camp</a>、<a target="_blank" rel="noopener" href="https://www.google.com/search?q=%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2">六角學院</a> 的線上課程，還有英文比較好的可以考慮外國學習平台如 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=Udemy">Udemy</a> 和 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=Coursera">Coursera</a>。</p>
-<p>面對這麼多選擇，找到最合適的學習資源成了許多人的一大頭疼。就不同的程式語言&#x2F;工程師相關知識來說，網路上的各種免費資源以及培訓課程都可以助你實現夢想。但事實上每個人的學習風格、背景和目標都不盡相同會影響到最後轉職的成敗。所以如何在這堆資源中選擇，是挑戰的第一步也是最重要的一步。接下來，我會分別介紹不同的資源。</p>
-<h2 id="實體培訓課程"><a href="#實體培訓課程" class="headerlink" title="實體培訓課程"></a><strong>實體培訓課程</strong></h2><p>實體的 Bootcamp 培訓課程，算是歷史比較悠久的工程師轉職方法。但相對上投入的時間(基本上都是全職投入最少 4-6 個月的時間完成課程)以及費用成本都不少：即使是完全免費的 AppWorks School，需要離職最少四個月完全沒有收入仍要承擔生活的費用，還不要說其他學程還需要差不多十萬的學費。如果沒有考慮清楚，這麼在經濟的損失上將會不小。</p>
-<p>但同時在實體課程最大好處就是「環境與文化」，特別當你有一群一起奮鬥的戰友你中途放棄的動機將會大大的減少。當看到別人也同樣為了一些程序苦惱時，在自己卡關時就不會那麼焦慮；或是看到大家周末都在做專案時，會覺得自己應該再拼一點。這些都是實體培訓課的推動力。</p>
-<p>最後，實體課程一般會有 demo day 以及媒合日，這些最後的作品平台以及課程的口碑在找工作階段時也會令你更容易找到轉職後的工作</p>
-<h3 id="Appworks-School"><a href="#Appworks-School" class="headerlink" title="Appworks School"></a><a target="_blank" rel="noopener" href="https://tw.alphacamp.co/">Appworks School</a></h3><p>在搜集台灣 coding bootcamp 資料時，Appworks School 可能算是台灣最具知名度的實體 bootcamp…基本上都是它的課程資訊。AppWorks School 成立於 2016 年，最大的特色是完全免費參加，每期維持約 4 個月(4 周線上學習+16 周台北駐點集訓)。對比其他需要約十多萬學費的課程對經濟的負擔實在是相差太遠。而且在網絡找到的評價都十分不錯。在報名之前 AppWork School 有提供一些基本的學習資源可以作為初步了解 Coding 以及確認對 Coding 的興趣和熱情。這個課程最大的缺點就是錄取率很低，看之前的資料，每屆的錄取率可能只有約 15%。所以在確定報名的時候需要足夠的決心以及學會在報名資料中讓 Appworks School 的人去看到你。如果對 Appworks School 的課程有興趣可以多觀看他們的 Youtube，有一些 Q&amp;A 令你更了解到 Appwork 報名時的資訊</p>
-<h3 id="資策會"><a href="#資策會" class="headerlink" title="資策會"></a><a target="_blank" rel="noopener" href="https://www.iiiedu.org.tw/ispan">資策會</a></h3><p>資策會的課程眾多，有全端，前端，Java 等課程，課程約 16 ～ 20 周，上課時間為星期一到五白天也有可能配合導師在晚上或是週末假期上課。費用按不同課程大概在十萬多一點，在網絡上看來也算是滿有口碑的。資策會在台灣各地都有分部，如果不是住在台北希望在離家比較近的地點學習，資策會可能是一個比較多地點的選擇。按課程資料，專題的製作會是課程的一大重點，由個人小專題到團體合作的專題都有，完訓後有履歷的討論，面試技巧的課程以及產業媒合。對比 Appworks School 的課程，沒有看到有提過資策會的課程錄取率問題，所以應該有決心以及財力支持的情況下錄取的機會滿大的</p>
-<h3 id="Build-School"><a href="#Build-School" class="headerlink" title="Build School"></a><a target="_blank" rel="noopener" href="https://www.build-school.com/">Build School</a></h3><p>Build School 成立於 2016 年，台北及新竹都有開辦課程。創辦人 Dann Wu 是微軟出身，所以在課程設計上及課程講師都與微軟有關連。Build School 課程為 23 週的訓練及實作：1-13 週是基礎教學，14-22 週是專題實作。課程中以作品專案式的學習，著重於「learn how to learn」的能力。學費約為 8-9 萬，Build School 有提出彈性結訓後學費分期方案  <strong>，</strong>一開始付學費約 NTD 37,500，待學員結訓後，再付剩餘的學費以減輕學習的成本。(以上參考金額為 2024 夏季班為標準, 最新資訊請到 Build School 網站)</p>
-<hr>
-<h2 id="線上培訓課程"><a href="#線上培訓課程" class="headerlink" title="線上培訓課程"></a><strong>線上培訓課程</strong></h2><p>如果覺得實體培訓課程的時間成本，經濟成本太高，或是只是想有系統性的兼職學習程式，線上培訓課程也是另一個選擇。對比之下線上培訓課程缺少了一起學習一起面對困難的同伴，也會因為缺乏時間的壓力所以最後也不了了之。但是如果不想全身投入，也有一定的自制力的話線上的課程也是一個選項。線上培訓課程對比免費的資源多了一些助教，社群的機制，在面對困難時還是有一定幫助。當然，現在網絡上也有很多的免費資源，如果是單純想了解 Coding 的知識，在下段內容將會提供一些相關的免費資源學習。</p>
-<h3 id="Alpha-Camp"><a href="#Alpha-Camp" class="headerlink" title="Alpha Camp"></a><a target="_blank" rel="noopener" href="https://tw.alphacamp.co/">Alpha Camp</a></h3><p>Alpha Camp 是筆者正在使用的課程, AC 的課程為分四階段: 第一階段是四週的程式入門，第二階段為前端開發實作，第三階段是後端開發實作以及第四階段的前&#x2F;後端專修。完成四階段的費用比實體課程稍低一些。課程中有不同的作業以及助教批改評論。AC 課程最大的特色是有一個健全的社群：每周的線上助教 QA 時間，同學的技術討論，每周的 co-working space 與同學一同交流學習分享經驗，定期舉辦的校友分享以及 side project 求職小組的媒合。這些在轉職求職時除了知識以外很重要的資源。</p>
-<h3 id="六角學院"><a href="#六角學院" class="headerlink" title="六角學院"></a><a target="_blank" rel="noopener" href="https://www.hexschool.com/">六角學院</a></h3><p>六角學院的課程以前端為主，分不同的主題課程可以按學生的程度去選擇，課程費用大概 1-3 千不等而前端全組合費用約為 NTD13,950。創辦人之一卡斯伯的部落格內容十分豐富，筆者是先查到卡斯伯的部落格才發現到六角學院。按網上的資料(因為筆者為後端工程師所以沒有詳細了解六角學院的相關資訊)六角學院的課程十分適合培養前端的基礎，對基本觀念的解釋也很清晰，適合作為轉職初階的第一步。</p>
-<h3 id="WeHelp-Bootcamp"><a href="#WeHelp-Bootcamp" class="headerlink" title="WeHelp Bootcamp"></a><a target="_blank" rel="noopener" href="https://wehelp.tw/">WeHelp Bootcamp</a></h3><p>WeHelp 是由 YouTuber 彭彭的課程 創辦的，在 Youtube 上也有很多免費的課程可以體驗。WeHelp 是在 2021 開辦的。WeHelp 是類似實體課程的模式在 26 週的課程提供作業和專案實作以及畢業後的求職導向模式，主要是線上互動為主但也可以參加在台北的實體活動。課程分三階段:網<strong>站</strong>開發基礎(第一階段)，電商網站實務(第二階段)以及個人專案、求職準備(第三階段)，課程約三至四萬(是否出席實體活動)。根據網站的資料每屆錄取率約百分之三十。在網站上有之前每一屆的專案展示以及招生說明會的紀錄，如果有興趣可以到網站上查看</p>
-<h3 id="Udemy"><a href="#Udemy" class="headerlink" title="Udemy"></a><a target="_blank" rel="noopener" href="https://www.udemy.com/">Udemy</a></h3><p>Udemy 是一個外國的學習平台，有超級超級超級多課程包括轉職軟體工程師或是不同程式語言主題的課程。因為是外國的平台所以英文課程為主所以比較適合英文一定水平的同學，當然也有部份的中文課程所以也可以在 Udemy 了解。課程約在 NTW2000~4000 範圍之間，但 Udemy 會不定時有優惠可以在數百元的情況下就買到課程，如果不是急上課的話可以等到合適的時機再買節省費用。</p>
-<p>在 Udemy 上比較熱門的課程有<strong>Dr. A</strong>ngela Yu - The Complete 2024 Web Development Bootcamp(超過 125 萬學生)及 Colt Steele - The Web Developer Bootcamp 2024(超過 90 萬學生)</p>
-<p>Dr. Angela Yu 是 Udemy 中其中一位最受歡迎的老師，她的課程還會包括到 Web3, NFT，Crypto。</p>
-<p>Colt Steele 也是一位十分受歡迎的老師，在課程上會比較多練習以及比較基礎的內容。</p>
-<hr>
-<h2 id="免費的線上資源"><a href="#免費的線上資源" class="headerlink" title="免費的線上資源"></a>免費的線上資源</h2><p>現在網絡上的免費資源有很多而且都不乏質量的內容，如果希望以最少的經濟成本去學習，令到這些免費的資源相信都可以去到很好的程度。以下是部分我在學習過程中留意到的資源:</p>
-<h3 id="CS50"><a href="#CS50" class="headerlink" title="CS50"></a><a target="_blank" rel="noopener" href="https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home">CS50</a></h3><p>CS50 是哈佛大學的通識課程，是一門在介紹 Computer Science 的課。CS50 在全球是相當知名而且熱門的課程，每年修課人數超過萬人，也是哈佛大學跟 edX 上最多人選修的課程。相信每一個軟工就算沒有認真上過都一定會知道 CS50 的這堂課。CS50 可以在 edX 上免費修讀，如果想要 edX 上的證書則需要 USD219。不過如果完成 CS50 中所有的功課，也可以免費申請 CS50 課程的證書。CS50 課程是是計算機基礎，十分著重計數機及程式後的原理而非語言的應用。因為大部分的 Bootcamp 都是教導程式語言及應用，CS50 的課程則很好的填補了基礎的空白。</p>
-<h3 id="FreeCode-Camp"><a href="#FreeCode-Camp" class="headerlink" title="FreeCode Camp"></a><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/">FreeCode Camp</a></h3><p>FreeCode Camp (FCC)是一個十分熱門的 Web 開發學習平台，鼓勵 Learning by Doing 的學習方式。前端、後端、數據可視化等幾乎涵蓋所有的 Web 開發知識都有相關的課程，在 YouTube 上也很有多課程。FCC 課程都是以習題式的練習搭配相關語法介紹。每個課程都有小主題，在課程的作業完成後會頒發證書加入自己的履歷或者 Linkedin 去求職。</p>
-<h3 id="YouTube"><a href="#YouTube" class="headerlink" title="YouTube"></a>YouTube</h3><p>在 YouTube 上，有許多知名的程式語言教學頻道，其中包括彭彭的課程、Net Ninja 和 Traversy Media。這些頻道提供了豐富多樣的程式開發相關內容，涵蓋了從基礎到高級的各種主題。</p>
-<p>首先，<a target="_blank" rel="noopener" href="https://www.youtube.com/@cwpeng-course">彭彭的課程</a>的內容深入但易於理解。他的課程涵蓋了多種前後端的程式語言，框架，並通過不同的教學來幫助學生深入理解。無論您是初學者還是有一定程式開發經驗，都能在彭彭的課程中找到適合自己的內容。</p>
-<p>其次，<a target="_blank" rel="noopener" href="https://www.youtube.com/@NetNinja">Net Ninja</a> 提供了豐富的前端開發相關教學。從 HTML、CSS 到 JavaScript，再到 React 和 Vue 等前端框架再到 MongoDB 和 MySQL 等，Net Ninja 的課程涵蓋了前後端開發的各個方面。他的教學風格清晰明了，並且經常以實例演示來加深學生的理解。</p>
-<p>最後，<a target="_blank" rel="noopener" href="https://www.youtube.com/@TraversyMedia">Traversy Media</a> 也是涵蓋了廣泛的主題，包括前端、後端和全端開發，以及各種程式語言和框架的教學。Traversy Media 的教學內容豐富，並且注重實用性和實戰應用，對於想要快速入門並掌握實用技能的學生來說是一個不可多得的資源。</p>
-<p>總的來說，在 YouTube 上有許多優質的程式開發相關教學頻道，彭彭的課程、Net Ninja 和 Traversy Media 僅僅是其中的幾個代表。</p>
-<hr>
-<h2 id="總結，所以應該怎樣去學習程式"><a href="#總結，所以應該怎樣去學習程式" class="headerlink" title="總結，所以應該怎樣去學習程式?"></a><strong>總結，所以應該怎樣去學習程式?</strong></h2><p>總結來看，學習程式開發是一項需要不斷學習和實踐的過程。無論您選擇哪種學習途徑，都應該考慮以下幾點：</p>
-<p>首先，了解自己的學習風格和目標。每個人的學習方式和目標都不同，有些人喜歡通過閱讀書籍學習，有些人則更喜歡通過觀看視頻或參加實際項目來學習。同時，您也應該明確自己的學習目標，是想要轉行成為一名專業的軟體工程師，還是只是想要獲得一些基礎知識。</p>
-<p>其次，選擇合適的學習資源。根據自己的學習風格和目標，選擇適合自己的學習途徑和資源是至關重要的。您可以選擇參加實體培訓課程，如 Bootcamp 或實體課程，也可以選擇在線培訓課程，如 Alpha Camp 或 Udemy，還可以通過免費的線上資源，如 CS50 和 FreeCode Camp 來學習。</p>
-<p>再者，堅持不懈地學習和實踐。學習程式開發是一項需要持之以恆的過程，您需要不斷地學習新知識，並通過實際項目來應用這些知識。在學習的過程中可能會遇到困難和挫折，但是只要堅持不懈地努力，最終一定能夠取得成功。</p>
-<p>最後，不斷地更新和提升自己的技能。隨著科技的不斷發展和變化，程式開發領域也在不斷地變化和演進。因此，作為一名程式開發者，您應該保持開放的心態，不斷地學習新知識和技能，並不斷地提升自己的能力，以應對未來的挑戰和機遇。</p>
-<p>總的來說，學習程式開發是一項充滿挑戰但也充滿樂趣的過程。通過適合自己的學習途徑和資源，堅持不懈地學習和實踐，以及不斷地更新和提升自己的技能，您一定能夠成為一名優秀的軟體工程師，並在這個領域中取得成功。</p>
-
+          <p>如何選擇適合的學習管道轉職軟體工程師。從實體課程到線上課程，各種資源應有盡有。選擇最適合自己的方式，堅持不懈地學習和實踐，才能在這個領域取得成功。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/051410000.html">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
