@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"donaldwongsuisang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQZ7S0BSW3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JQZ7S0BSW3');
+</script>
+  <meta name="description" content="在 JavaScript 中，變數和函數提升是關鍵概念，這些機制影響了代碼的執行順序和結果。本文將深入探討變數提升和函數提升的工作原理、原因以及最佳實踐，以幫助開發者更好地理解和應用這些知識。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript的變數和函數提升(Hoisting)">
+<meta property="og:url" content="https://donaldwongsuisang.github.io/2024/060750031.html">
+<meta property="og:site_name" content="Donald&#39;s Learning log">
+<meta property="og:description" content="在 JavaScript 中，變數和函數提升是關鍵概念，這些機制影響了代碼的執行順序和結果。本文將深入探討變數提升和函數提升的工作原理、原因以及最佳實踐，以幫助開發者更好地理解和應用這些知識。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-07T03:27:11.000Z">
+<meta property="article:modified_time" content="2024-06-07T16:35:26.683Z">
+<meta property="article:author" content="Donald Wong">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="AlphaCamp_Notes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://donaldwongsuisang.github.io/2024/060750031.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript的變數和函數提升(Hoisting) | Donald's Learning log</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQZ7S0BSW3"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JQZ7S0BSW3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Donald's Learning log</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-blog fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://donaldwongsuisang.github.io/2024/060750031.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Donald Wong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Donald's Learning log">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript的變數和函數提升(Hoisting)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-06-07 11:27:11" itemprop="dateCreated datePublished" datetime="2024-06-07T11:27:11+08:00">2024-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-06-08 00:35:26" itemprop="dateModified" datetime="2024-06-08T00:35:26+08:00">2024-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">在 JavaScript 中，變數和函數提升是關鍵概念，這些機制影響了代碼的執行順序和結果。本文將深入探討變數提升和函數提升的工作原理、原因以及最佳實踐，以幫助開發者更好地理解和應用這些知識。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-變數提升"><a href="#1-變數提升" class="headerlink" title="1. 變數提升"></a>1. 變數提升</h1><p>通常，JavaScript 引擎會在正式執行之前進行一次預編譯。在這個過程中，變數聲明和函數聲明會被提升至當前作用域的頂端，然後進行後續的處理。</p>
+<p>看以下代碼，我們在函數中聲明了一個變數，不過這個變數聲明是在 if 語句塊中：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hoistVariable</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!foo) &#123;</span><br><span class="line">        <span class="keyword">var</span> foo = <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistVariable</span>();</span><br></pre></td></tr></table></figure>
+
+<p>運行這段代碼，我們會發現 <code>foo</code> 的值是 <code>5</code>。初學者可能對此不甚理解，如果外層作用域也存在一個 <code>foo</code> 變數，就更困惑了。答案是：不會。如果當前作用域中存在此變數聲明，無論它在哪裡聲明，引用此變數時會在當前作用域中查找，不會去外層作用域。</p>
+<p>這要提到預編譯機制。經過一次預編譯後，上面的代碼邏輯如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 預編譯之後</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hoistVariable</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo;</span><br><span class="line">    <span class="keyword">if</span> (!foo) &#123;</span><br><span class="line">        foo = <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistVariable</span>();</span><br></pre></td></tr></table></figure>
+
+<p>引擎將變數聲明提升到了函數頂部，初始值為 <code>undefined</code>，自然，if 語句塊會被執行，<code>foo</code> 變數被賦值為 <code>5</code>，下面的打印結果就是預期的了。</p>
+<p>再看下面一個例子：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hoistVariable</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = foo || <span class="number">5</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistVariable</span>();</span><br></pre></td></tr></table></figure>
+
+<p><code>foo || 5</code> 這個表達式的結果是 <code>5</code> 而不是 <code>3</code>。雖然外層作用域有個 <code>foo</code> 變數，但函數內不會引用它，因為預編譯後的代碼邏輯如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// 預編譯之後</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hoistVariable</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo;</span><br><span class="line">    foo = foo || <span class="number">5</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistVariable</span>();</span><br></pre></td></tr></table></figure>
+
+<p>如果當前作用域中聲明了多個同名變數，這些變數的同一個標識符會被提升至作用域頂部，其他部分按順序執行，比如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hoistVariable</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">3</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> foo = <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hoistVariable</span>();</span><br></pre></td></tr></table></figure>
+
+<p>由於 JavaScript 沒有塊作用域，只有全局作用域和函數作用域，所以預編譯後的代碼邏輯為：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 預編譯之後</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hoistVariable</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo;</span><br><span class="line">    foo = <span class="number">3</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        foo = <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hoistVariable</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-函數提升"><a href="#2-函數提升" class="headerlink" title="2. 函數提升"></a>2. 函數提升</h2><p>以下這段代碼很常見：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hoistFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 輸出: I am hoisted</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;I am hoisted&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistFunction</span>();</span><br></pre></td></tr></table></figure>
+
+<p>函數可以在聲明之前被調用，與變數聲明不同的是，它能得到正確的結果。引擎把函數聲明提升到了當前作用域的頂部，預編譯後的代碼邏輯如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 預編譯之後</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hoistFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;I am hoisted&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 輸出: I am hoisted</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistFunction</span>();</span><br></pre></td></tr></table></figure>
+
+<p>如果同一作用域中存在多個同名函數聲明，後出現的將會覆蓋前面的函數聲明：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">histFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 輸出: 2</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistFunction</span>();</span><br></pre></td></tr></table></figure>
+
+<p>函數提升優先於變數提升。函數表達式不會被提升：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函數聲明</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;function declaration&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 匿名函數表達式</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;anonymous function expression&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 具名函數表達式</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">function</span> <span class="title function_">bar</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;named function expression&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>當函數聲明遇到函數表達式時：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hoistFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 2</span></span><br><span class="line">    <span class="keyword">var</span> foo = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 1</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistFunction</span>();</span><br></pre></td></tr></table></figure>
+
+<p>第一次調用 <code>foo()</code>，執行函數聲明，第二次調用時，函數表達式覆蓋了函數聲明，後續調用打印相同結果。預編譯後的邏輯：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 預編譯之後</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hoistFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> foo;</span><br><span class="line">    foo = <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 2</span></span><br><span class="line">    foo = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hoistFunction</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-為什麼要進行提升"><a href="#3-為什麼要進行提升" class="headerlink" title="3. 為什麼要進行提升"></a>3. 為什麼要進行提升</h2><p>關於變數提升和函數提升的原因，一直沒有明確的答案。Brendan Eich（JavaScript 的創始人）提到，函數提升解決了相互遞歸的問題。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isEven</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">isOdd</span>(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">isEven</span>(<span class="number">2</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isOdd</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">isEven</span>(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果沒有函數提升，而是按照自下而上的順序，當 <code>isEven</code> 函數被調用時，<code>isOdd</code> 函數還未聲明，所以當 <code>isEven</code> 內部無法調用 <code>isOdd</code> 函數。因此，Brendan Eich 設計了函數提升，將函數提升至當前作用域的頂部。</p>
+<h2 id="4-最佳實踐"><a href="#4-最佳實踐" class="headerlink" title="4. 最佳實踐"></a>4. 最佳實踐</h2><p>理解變數提升和函數提升有助於更好地掌握 JavaScript，但在開發中應該避免這些技巧，保持代碼的可讀性和可維護性。具體做法是：無論變數還是函數，都必須先聲明後使用。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Scott&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> sayHello = <span class="keyword">function</span>(<span class="params">guest</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(name, <span class="string">&#x27;says hello to&#x27;</span>, guest);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> guests = [<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Tom&#x27;</span>, <span class="string">&#x27;Jack&#x27;</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; guests.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> guest = guests[i];</span><br><span class="line">    <span class="comment">// do something on guest</span></span><br><span class="line">    <span class="title function_">sayHello</span>(guest);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，ES6 中的 <code>class</code> 聲明也存在提升，但其行為與 <code>let</code>、<code>const</code> 類似，被約束和限制。如果在聲明之前引用，會拋出異常。</p>
+<p>無論是早期代碼還是 ES6 中的代碼，都應遵循先聲明，後使用的原則。</p>
+<h3 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h3><p>了解變數和函數提升有助於掌握 JavaScript 的執行邏輯，避免潛在的陷阱。變數提升將變數聲明移至作用域頂部，初始值為 <code>undefined</code>，而函數提升則將整個函數聲明提升到頂部，確保在調用前可用。這些機制解決了函數相互遞歸等問題。然而，為了保持代碼的可讀性和可維護性，應遵循先聲明後使用的原則。使用 <code>let</code> 和 <code>const</code> 等現代語法可以進一步提高代碼的安全性和可預測性。通過理解並應用這些最佳實踐，開發者能夠編寫更健壯和可靠的 JavaScript 代碼。</p>
+<p>参考資料：</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting">提升（Hoisting)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuhe688/p/5891273.html">JavaScript: 变量提升和函数提升</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/AlphaCamp-Notes/" rel="tag"># AlphaCamp_Notes</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/060610507.html" rel="prev" title="深入理解 JavaScript的變數">
+      <i class="fa fa-chevron-left"></i> 深入理解 JavaScript的變數
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%AE%8A%E6%95%B8%E6%8F%90%E5%8D%87"><span class="nav-number">1.</span> <span class="nav-text">1. 變數提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B8%E6%8F%90%E5%8D%87"><span class="nav-number">1.1.</span> <span class="nav-text">2. 函數提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E9%80%B2%E8%A1%8C%E6%8F%90%E5%8D%87"><span class="nav-number">1.2.</span> <span class="nav-text">3. 為什麼要進行提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9C%80%E4%BD%B3%E5%AF%A6%E8%B8%90"><span class="nav-number">1.3.</span> <span class="nav-text">4. 最佳實踐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.3.1.</span> <span class="nav-text">總結</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Donald Wong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Donald Wong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DonaldWongSuiSang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DonaldWongSuiSang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:donaldwongsuisang@gmail.com" title="E-Mail → mailto:donaldwongsuisang@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Donald Wong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
