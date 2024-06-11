@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"donaldwongsuisang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQZ7S0BSW3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JQZ7S0BSW3');
+</script>
+  <meta name="description" content="JavaScript 中的物件是一個重要概念，它們是屬性和方法的集合，類似於現實生活中的物件。本文探討了在 JavaScript 中創建、訪問和操作物件的方法，以及如何定義方法和使用 this 關鍵字。透過本文，您將更深入地了解 JavaScript 中的物件導向編程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript物件">
+<meta property="og:url" content="https://donaldwongsuisang.github.io/2024/06097389.html">
+<meta property="og:site_name" content="Donald&#39;s Learning log">
+<meta property="og:description" content="JavaScript 中的物件是一個重要概念，它們是屬性和方法的集合，類似於現實生活中的物件。本文探討了在 JavaScript 中創建、訪問和操作物件的方法，以及如何定義方法和使用 this 關鍵字。透過本文，您將更深入地了解 JavaScript 中的物件導向編程。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-09T03:27:11.000Z">
+<meta property="article:modified_time" content="2024-06-11T04:28:49.031Z">
+<meta property="article:author" content="Donald Wong">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="AlphaCamp_Notes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://donaldwongsuisang.github.io/2024/06097389.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript物件 | Donald's Learning log</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQZ7S0BSW3"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JQZ7S0BSW3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Donald's Learning log</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-blog fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://donaldwongsuisang.github.io/2024/06097389.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Donald Wong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Donald's Learning log">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript物件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-06-09 11:27:11" itemprop="dateCreated datePublished" datetime="2024-06-09T11:27:11+08:00">2024-06-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-06-11 12:28:49" itemprop="dateModified" datetime="2024-06-11T12:28:49+08:00">2024-06-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">JavaScript 中的物件是一個重要概念，它們是屬性和方法的集合，類似於現實生活中的物件。本文探討了在 JavaScript 中創建、訪問和操作物件的方法，以及如何定義方法和使用 this 關鍵字。透過本文，您將更深入地了解 JavaScript 中的物件導向編程。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="創建新物件"><a href="#創建新物件" class="headerlink" title="創建新物件"></a>創建新物件</h2><h3 id="使用物件初始器"><a href="#使用物件初始器" class="headerlink" title="使用物件初始器"></a>使用物件初始器</h3><p>你可以使用物件初始器來創建一個物件。物件初始器也稱為物件字面量。物件初始器的語法如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="title class_">Name</span> <span class="number">1</span>: <span class="title class_">Value</span> <span class="number">1</span>, <span class="comment">// 屬性名稱可以是識別符、數字或字符串</span></span><br><span class="line">  <span class="title class_">Name</span> <span class="number">2</span>: <span class="number">2</span>, <span class="comment">// 或數字</span></span><br><span class="line">  <span class="string">&quot;Name n&quot;</span>: <span class="number">3</span>, <span class="comment">// 或字符串</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，新創建的物件被賦值給一個變數 <code>obj</code> — 這是可選的。如果你不需要在其他地方引用這個物件，你可以不必將其賦值給一個變數。如果物件字面量出現在預期的語句位置，你可能需要將物件字面量括在括號中，以免字面量與塊語句混淆。</p>
+<p>物件初始器是表達式，每次執行包含它的語句時都會創建一個新物件。相同的物件初始器創建不同的物件，這些物件彼此不相等。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x;</span><br><span class="line"><span class="keyword">if</span> (cond) &#123;</span><br><span class="line">  x = &#123; <span class="attr">greeting</span>: <span class="string">&quot;hi there&quot;</span> &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用構造函數"><a href="#使用構造函數" class="headerlink" title="使用構造函數"></a>使用構造函數</h3><p>另外，可以通過以下兩個步驟來創建一個物件：</p>
+<ol>
+<li>通過編寫構造函數來定義物件類型。有一個很好的傳統是使用大寫字母開頭。</li>
+<li>使用 <code>new</code> 關鍵字創建物件的實例。</li>
+</ol>
+<p>要定義一個物件類型，創建一個函數，函數指定它的名稱、屬性和方法。例如，假設你想為汽車創建一個物件類型。你希望這種類型的物件被稱為 <code>Car</code>，並且你希望它有用於製造商、型號和年份的屬性。為此，你將編寫以下函數：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Car</span>(<span class="params">make, model, year</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">make</span> = make;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">model</span> = model;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">year</span> = year;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>現在，可以創建一個名為 <code>myCar</code> 的物件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myCar = <span class="keyword">new</span> <span class="title class_">Car</span>(<span class="string">&quot;Eagle&quot;</span>, <span class="string">&quot;Talon TSi&quot;</span>, <span class="number">1993</span>);</span><br></pre></td></tr></table></figure>
+
+<p>這個語句創建了 <code>myCar</code>，並且將其屬性的指定值分別設置為 “Eagle”、”Talon TSi” 和 1993。然後 <code>myCar.make</code> 的值是字符串 “Eagle”，<code>myCar.model</code> 的值是字符串 “Talon TSi”，<code>myCar.year</code> 的值是整數 1993，等等。參數和函數的順序應該是一樣的。</p>
+<p>你可以通過調用 <code>new</code> 來創建任意數量的 <code>Car</code> 物件。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> kenscar = <span class="keyword">new</span> <span class="title class_">Car</span>(<span class="string">&quot;Nissan&quot;</span>, <span class="string">&quot;300ZX&quot;</span>, <span class="number">1992</span>);</span><br><span class="line"><span class="keyword">const</span> vpgscar = <span class="keyword">new</span> <span class="title class_">Car</span>(<span class="string">&quot;Mazda&quot;</span>, <span class="string">&quot;Miata&quot;</span>, <span class="number">1990</span>);</span><br></pre></td></tr></table></figure>
+
+<p>一個物件可以有一個自己的屬性是另一個物件。例如，假設你定義了一個名為 <code>Person</code> 的物件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age, sex</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">sex</span> = sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後像這樣實例化兩個新的 <code>Person</code> 物件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rand = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Rand McKinnon&quot;</span>, <span class="number">33</span>, <span class="string">&quot;M&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> ken = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Ken Jones&quot;</span>, <span class="number">39</span>, <span class="string">&quot;M&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然後，你可以重新編寫 <code>Car</code> 的定義，包括一個 <code>owner</code> 屬性，它接受一個 <code>Person</code> 物件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Car</span>(<span class="params">make, model, year, owner</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">make</span> = make;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">model</span> = model;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">year</span> = year;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">owner</span> = owner;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要實例化新物件，你可以使用以下方法：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> car1 = <span class="keyword">new</span> <span class="title class_">Car</span>(<span class="string">&quot;Eagle&quot;</span>, <span class="string">&quot;Talon TSi&quot;</span>, <span class="number">1993</span>, rand);</span><br><span class="line"><span class="keyword">const</span> car2 = <span class="keyword">new</span> <span class="title class_">Car</span>(<span class="string">&quot;Nissan&quot;</span>, <span class="string">&quot;300ZX&quot;</span>, <span class="number">1992</span>, ken);</span><br></pre></td></tr></table></figure>
+
+<p>請注意，在創建新物件時，上述語句不是傳遞文字或整數值作為新物件的參數，而是將物件 <code>rand</code> 和 <code>ken</code> 作為所有者的參數。然後，如果你想找出 <code>car2</code> 的所有者的名字，你可以訪問以下屬性：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car2.<span class="property">owner</span>.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<p>你始終可以向以前定義的物件添加屬性。例如，語句</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car1.<span class="property">color</span> = <span class="string">&quot;black&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>將一個顏色屬性添加到 <code>car1</code>，並將其值設置為 “black”。然而，這不會影響任何其他物件。要將新屬性添加到相同類型的所有物件，你必須將屬性添加到 <code>Car</code> 物件類型的定義中。</p>
+<h3 id="使用-Object-create-方法"><a href="#使用-Object-create-方法" class="headerlink" title="使用 Object.create() 方法"></a>使用 <code>Object.create()</code> 方法</h3><p>物件也可以使用 <code>Object.create()</code> 方法創建。這個方法非常有用，因為它允許你選擇要為所要創建的物件選擇原型物件，而無需定義構造函數。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 動物屬性和方法封裝</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Animal</span> = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;無脊椎動物&quot;</span>, <span class="comment">// 屬性的默認值</span></span><br><span class="line">  <span class="title function_">displayType</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 顯示動物類型的方法</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創建名為 animal1 的新動物類型</span></span><br><span class="line"><span class="keyword">const</span> animal1 = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Animal</span>);</span><br><span class="line">animal1.<span class="title function_">displayType</span>(); <span class="comment">// 輸出: 無脊椎動物</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 創建名為 fish 的新動物類型</span></span><br><span class="line"><span class="keyword">const</span> fish = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Animal</span>);</span><br><span class="line">fish.<span class="property">type</span> = <span class="string">&quot;魚類&quot;</span>;</span><br><span class="line">fish.<span class="title function_">displayType</span>(); <span class="comment">// 輸出: 魚類</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="物件和屬性"><a href="#物件和屬性" class="headerlink" title="物件和屬性"></a>物件和屬性</h2><p>JavaScript 物件具有與之關聯的屬性。物件屬性基本上與變量相同，只是它們與物件關聯，而不是作用域。物件的屬性定義了物件的特性。</p>
+<p>例如，以下示例創建了一個名為 <code>myCar</code> 的物件，其中包含名稱為 <code>make</code>、<code>model</code> 和 <code>year</code> 的屬性，它們的值分別設置為 “Ford”、”Mustang” 和 1969：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myCar = &#123;</span><br><span class="line">  <span class="attr">make</span>: <span class="string">&quot;Ford&quot;</span>,</span><br><span class="line">  <span class="attr">model</span>: <span class="string">&quot;Mustang&quot;</span>,</span><br><span class="line">  <span class="attr">year</span>: <span class="number">1969</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>與 JavaScript 變量一樣，屬性名稱區分大小寫。屬性名稱只能是字符串或符號 — 所有鍵都轉換為字符串，除非它們是符號。事實上，陣列索引本質上是具有包含整數的字符串鍵的屬性。</p>
+<h3 id="訪問屬性"><a href="#訪問屬性" class="headerlink" title="訪問屬性"></a>訪問屬性</h3><p>你可以通過屬性名稱來訪問物件的屬性。屬性訪問器有兩種語法：點表示法和括號表示法。例如，你可以這樣訪問 <code>myCar</code> 物件的屬性：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 點表示法</span></span><br><span class="line">myCar.<span class="property">make</span> = <span class="string">&quot;Ford&quot;</span>;</span><br><span class="line">myCar.<span class="property">model</span> = <span class="string">&quot;Mustang&quot;</span>;</span><br><span class="line">myCar.<span class="property">year</span> = <span class="number">1969</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 括號表示法</span></span><br><span class="line">myCar[<span class="string">&quot;make&quot;</span>] = <span class="string">&quot;Ford&quot;</span>;</span><br><span class="line">myCar[<span class="string">&quot;model&quot;</span>] = <span class="string">&quot;Mustang&quot;</span>;</span><br><span class="line">myCar[<span class="string">&quot;year&quot;</span>] = <span class="number">1969</span>;</span><br></pre></td></tr></table></figure>
+
+<p>物件屬性名稱可以是任何 JavaScript 字符串或符號，包括空字符串。但是，你不能使用點表示法訪問屬性，如果屬性名稱不是有效的 JavaScript 標識符。例如，屬性名稱包含空格或連字符、以數字開頭，或者被包含在變量中時，只能使用括號表示法。當需要在運行時動態確定屬性名稱時，這種表示法也非常有用。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;myString&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> rand = <span class="title class_">Math</span>.<span class="title function_">random</span>();</span><br><span class="line"><span class="keyword">const</span> anotherObj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 myObj 上創建額外的屬性</span></span><br><span class="line">myObj.<span class="property">type</span> = <span class="string">&quot;用於類型的點表示法&quot;</span>;</span><br><span class="line">myObj[<span class="string">&quot;date created&quot;</span>] = <span class="string">&quot;此鍵包含空格&quot;</span>;</span><br><span class="line">myObj[str] = <span class="string">&quot;此鍵在變量 str 中&quot;</span>;</span><br><span class="line">myObj[rand] = <span class="string">&quot;這裡的鍵是隨機數&quot;</span>;</span><br><span class="line">myObj[anotherObj] = <span class="string">&quot;此鍵是對象 anotherObj&quot;</span>;</span><br><span class="line">myObj[<span class="string">&quot;&quot;</span>] = <span class="string">&quot;此鍵是空字符串&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   type: &#x27;用於類型的點表示法&#x27;,</span></span><br><span class="line"><span class="comment">//   &#x27;date created&#x27;: &#x27;此鍵包含空格&#x27;,</span></span><br><span class="line"><span class="comment">//   myString: &#x27;此鍵在變量 str 中&#x27;,</span></span><br><span class="line"><span class="comment">//   &#x27;0.6398914448618778&#x27;: &#x27;這裡的鍵是隨機數&#x27;,</span></span><br><span class="line"><span class="comment">//   &#x27;[object Object]&#x27;: &#x27;此鍵是對象 anotherObj&#x27;,</span></span><br><span class="line"><span class="comment">//   &#x27;&#x27;: &#x27;此鍵是空字符串&#x27;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">myString</span>); <span class="comment">// &#x27;此鍵在變量 str 中&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代碼中，鍵 anotherObj 是一個對象，它既不是字符串也不是符號。當它被添加到 myObj 時，JavaScript 調用了 anotherObj 的 toString() 方法，並將結果字符串用作新的鍵。</p>
+<p>你也可以使用存儲在變量中的字符串值來訪問屬性。變量必須以括號表示法傳遞。在上面的示例中，變量 str 包含 “myString”，這就是屬性名稱。因此，<code>myObj.str</code> 將返回 undefined。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">&quot;myString&quot;</span>;</span><br><span class="line">myObj[str] = <span class="string">&quot;此鍵在變量 str 中&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">str</span>); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj[str]); <span class="comment">// &#x27;此鍵在變量 str 中&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">myString</span>); <span class="comment">// &#x27;此鍵在變量 str 中&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>這允許在運行時訪問任何屬性：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> propertyName = <span class="string">&quot;make&quot;</span>;</span><br><span class="line">myCar[propertyName] = <span class="string">&quot;Ford&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通過更改變量的內容來訪問不同的屬性</span></span><br><span class="line">propertyName = <span class="string">&quot;model&quot;</span>;</span><br><span class="line">myCar[propertyName] = <span class="string">&quot;Mustang&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myCar); <span class="comment">// &#123; make: &#x27;Ford&#x27;, model: &#x27;Mustang&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，請注意使用括號來訪問屬性，特別是屬性名稱是由外部輸入給定的。可能使你的代碼易受對象注入攻擊。</p>
+<h3 id="列舉屬性"><a href="#列舉屬性" class="headerlink" title="列舉屬性"></a>列舉屬性</h3><p>有三種原生方法可以列出&#x2F;遍歷對象屬性：</p>
+<ol>
+<li>使用 <code>for...in</code> 循環。該方法遍歷對象的所有可枚舉字符串屬性，以及其原型鏈。</li>
+<li>使用 <code>Object.keys()</code>。該方法返回一個陣列，其中僅包含對象 <code>myObj</code> 中的可枚舉的自有字符串屬性（”鍵”），而不包括原型鏈中的屬性。</li>
+<li>使用 <code>Object.getOwnPropertyNames()</code>。該方法返回一個陣列，其中包含對象 <code>myObj</code> 的所有自有字符串屬性的名稱，無論它們是否可枚舉。</li>
+</ol>
+<p>你可以使用 <code>for...in</code> 循環與括號表示法來遍歷對象的所有可枚舉屬性。下面的函數展示了當你將對象和對象的名稱作為函數的參數傳遞給該函數時，如何顯示對象的屬性：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">javascript複製程式碼;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showProps</span>(<span class="params">obj, objName</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="comment">// 使用 Object.hasOwn() 來排除來自對象的原型鏈的屬性，並僅顯示 &quot;自有屬性&quot;</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Object</span>.<span class="property">hasOwnProperty</span>.<span class="title function_">call</span>(obj, i)) &#123;</span><br><span class="line">      result += <span class="string">`<span class="subst">$&#123;objName&#125;</span>.<span class="subst">$&#123;i&#125;</span> = <span class="subst">$&#123;obj[i]&#125;</span>\n`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>“自有屬性” 這個術語指的是對象的屬性，但不包括原型鏈中的屬性。因此，調用 <code>showProps(myCar, &#39;myCar&#39;)</code> 將打印出以下內容：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myCar.<span class="built_in">make</span> = Ford</span><br><span class="line">myCar.model = Mustang</span><br><span class="line">myCar.year = <span class="number">1969</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的示例相當於：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">showProps</span>(<span class="params">obj, objName</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="title function_">forEach</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">    result += <span class="string">`<span class="subst">$&#123;objName&#125;</span>.<span class="subst">$&#123;i&#125;</span> = <span class="subst">$&#123;obj[i]&#125;</span>\n`</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>目前沒有原生方法可以列出繼承的不可枚舉屬性。不過，可以通過以下函數實現：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">listAllProperties</span>(<span class="params">myObj</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> objectToInspect = myObj;</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (objectToInspect !== <span class="literal">null</span>) &#123;</span><br><span class="line">    result = result.<span class="title function_">concat</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(objectToInspect));</span><br><span class="line">    objectToInspect = <span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(objectToInspect);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要獲取更多信息，請參閱<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">可枚舉性和屬性擁有權</a>。</p>
+<h3 id="刪除屬性"><a href="#刪除屬性" class="headerlink" title="刪除屬性"></a>刪除屬性</h3><p>你可以使用 <code>delete</code> 運算符刪除非繼承的屬性。以下代碼展示了如何刪除屬性：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創建一個新的對象 myobj，帶有兩個屬性 a 和 b。</span></span><br><span class="line"><span class="keyword">const</span> myobj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">myobj.<span class="property">a</span> = <span class="number">5</span>;</span><br><span class="line">myobj.<span class="property">b</span> = <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除 a 屬性，留下 myobj 僅具有 b 屬性。</span></span><br><span class="line"><span class="keyword">delete</span> myobj.<span class="property">a</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;a&quot;</span> <span class="keyword">in</span> myobj); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="繼承"><a href="#繼承" class="headerlink" title="繼承"></a>繼承</h3><p>JavaScript 中的所有對象都至少繼承自另一個對象。被繼承的對象稱為原型，並且繼承的屬性可以在構造函數的原型對象中找到。參見<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">繼承和原型鏈</a>以獲取更多信息。</p>
+<h3 id="為一種類型的所有對象定義屬性"><a href="#為一種類型的所有對象定義屬性" class="headerlink" title="為一種類型的所有對象定義屬性"></a>為一種類型的所有對象定義屬性</h3><p>你可以使用 <code>prototype</code> 屬性向通過特定構造函數創建的所有對象添加屬性。這定義了一個屬性，該屬性被該類型的所有對象共享，而不僅僅是對象的一個實例。以下代碼向所有 <code>Car</code> 類型的對象添加了一個顏色屬性，然後從實例 <code>car1</code> 中讀取該屬性的值。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Car</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">color</span> = <span class="string">&quot;red&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(car1.<span class="property">color</span>); <span class="comment">// &quot;red</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定義方法"><a href="#定義方法" class="headerlink" title="定義方法"></a>定義方法</h3><p>方法是與對象相關聯的函數，或者更直接地說，方法是對象的屬性，其值是函數。方法的定義方式與定義普通函數的方式相同，只是必須將其分配為對象的屬性。參見方法定義以獲取更多詳情。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">objectName.<span class="property">methodName</span> = functionName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObj = &#123;</span><br><span class="line">  <span class="attr">myMethod</span>: <span class="keyword">function</span> (<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="comment">// 做一些事情</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">myOtherMethod</span>(<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="comment">// 做一些其他事情</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>objectName</code> 是現有的對象，<code>methodName</code> 是你要分配給方法的名稱，<code>functionName</code> 是函數的名稱。</p>
+<p>然後你可以這樣調用方法：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectName.<span class="title function_">methodName</span>(params);</span><br></pre></td></tr></table></figure>
+
+<p>通常，方法是在構造函數的原型對象上定義的，這樣相同類型的所有對象就共享了同一個方法。例如可以定義一個函數來格式化並顯示先前定義的 <code>Car</code> 對象的屬性。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Car</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">displayCar</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="string">`一輛漂亮的 <span class="subst">$&#123;<span class="variable language_">this</span>.year&#125;</span> <span class="subst">$&#123;<span class="variable language_">this</span>.make&#125;</span> <span class="subst">$&#123;<span class="variable language_">this</span>.model&#125;</span>`</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>請注意，使用 <code>this</code> 來引用該方法所屬的對象。然後，你可以對每個對象調用 <code>displayCar</code> 方法，如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">car1.<span class="title function_">displayCar</span>();</span><br><span class="line">car2.<span class="title function_">displayCar</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-this-來引用對象"><a href="#使用-this-來引用對象" class="headerlink" title="使用 this 來引用對象"></a>使用 <code>this</code> 來引用對象</h3><p>JavaScript 有一個特殊的關鍵字 <code>this</code>，你可以在方法內部使用它來引用當前對象。例如，假設你有兩個對象 <code>Manager</code> 和 <code>Intern</code>。每個對象都有自己的名稱、年齡和工作。在 <code>sayHi()</code> 函數中，請注意使用 <code>this.name</code>。當將相同的函數添加到兩個對象時，該函數將打印帶有其所附加對象的名稱的消息。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Manager</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Karina&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="attr">job</span>: <span class="string">&quot;Software Engineer&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Intern</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyrone&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">21</span>,</span><br><span class="line">  <span class="attr">job</span>: <span class="string">&quot;Software Engineer Intern&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`你好，我的名字是 <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將 sayHi 函數添加到兩個對象中</span></span><br><span class="line"><span class="title class_">Manager</span>.<span class="property">sayHi</span> = sayHi;</span><br><span class="line"><span class="title class_">Intern</span>.<span class="property">sayHi</span> = sayHi;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Manager</span>.<span class="title function_">sayHi</span>(); <span class="comment">// 你好，我的名字是 Karina</span></span><br><span class="line"><span class="title class_">Intern</span>.<span class="title function_">sayHi</span>(); <span class="comment">// 你好，我的名字是 Tyrone</span></span><br></pre></td></tr></table></figure>
+
+<p><code>this</code> 是一個「隱藏的參數」，通過在調用函數之前指定對象，它作為參數傳遞給函數。例如，在 <code>Manager.sayHi()</code> 中，<code>this</code> 是 <code>Manager</code> 對象，因為 <code>Manager</code> 出現在 <code>sayHi()</code> 函數之前。如果你從另一個對象中訪問相同的函數，<code>this</code> 也會改變。如果你使用其他方法來調用函數，如 <code>Function.prototype.call()</code> 或 <code>Reflect.apply()</code>，則可以將 <code>this</code> 的值明確地作為參數傳遞。</p>
+<h3 id="定義-getter-和-setter"><a href="#定義-getter-和-setter" class="headerlink" title="定義 getter 和 setter"></a>定義 getter 和 setter</h3><p>Getter 是與屬性相關聯的函數，用於獲取特定屬性的值。Setter 是與屬性相關聯的函數，用於設置特定屬性的值。它們可以間接表示屬性的值。</p>
+<p>Getter 和 setter 可以通過以下方式之一定義：</p>
+<ol>
+<li>在對象初始值設置器內定義，或</li>
+<li>在創建後隨時添加到任何現有對象。</li>
+</ol>
+<p>在對象初始值設置器內，getter 和 setter 的定義與常規方法相同，但在前面添加了 <code>get</code> 或 <code>set</code> 關鍵字。Getter 方法不能帶有參數，而 setter 方法預期恰好有一個參數（要設置的新值）。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObj = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">7</span>,</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">b</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span> + <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">c</span>(<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">a</span> = x / <span class="number">2</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">a</span>); <span class="comment">// 7</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">b</span>); <span class="comment">// 8，從 `get b()` 方法返回</span></span><br><span class="line">myObj.<span class="property">c</span> = <span class="number">50</span>; <span class="comment">// 調用 `set c(x)` 方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">a</span>); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p><code>myObj</code> 對象的屬性如下：</p>
+<ul>
+<li><code>myObj.a</code> —— 一個數字</li>
+<li><code>myObj.b</code> —— 一個 getter，返回 <code>myObj.a</code> 加 1</li>
+<li><code>myObj.c</code> —— 一個 setter，將 <code>myObj.a</code> 的值設置為 <code>myObj.c</code> 的值除以 2</li>
+</ul>
+<p>Getter 和 setter 也可以隨時添加到對象中，只需使用 <code>Object.defineProperties()</code> 方法。該方法的第一個參數是你想要定義 getter 或 setter 的對象。第二個參數是一個對象，其屬性名稱是 getter 或 setter 的名稱，屬性值是定義 getter 或 setter 函數的對象。以下是定義與前面示例中相同的 getter 和 setter 的示例：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObj = &#123; <span class="attr">a</span>: <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperties</span>(myObj, &#123;</span><br><span class="line">  <span class="attr">b</span>: &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span> + <span class="number">1</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">c</span>: &#123;</span><br><span class="line">    <span class="title function_">set</span>(<span class="params">x</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">a</span> = x / <span class="number">2</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">myObj.<span class="property">c</span> = <span class="number">10</span>; <span class="comment">// 調用 setter，將 10 / 2（5）分配給 &#x27;a&#x27; 屬性</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myObj.<span class="property">b</span>); <span class="comment">// 調用 getter，產生 a + 1，即 6</span></span><br></pre></td></tr></table></figure>
+
+<p>選擇哪種形式取決於你的編程風格和任務性質。如果可以更改原始對象的定義，那麼你可能會通過原始初始器來定義 getter 和 setter。這種形式更緊湊和自然。然而，如果需要稍後添加 getter 和 setter —— 可能是因為你沒有編寫該特定對象 —— 那麼第二種形式是唯一可能的形式。第二種形式更好地表示了 JavaScript 的動態性，但可能使代碼難以閱讀和理解。</p>
+<h3 id="比較物件"><a href="#比較物件" class="headerlink" title="比較物件"></a>比較物件</h3><p>在 JavaScript 中，物件是一種參考型別。兩個不同的物件永遠不會相等，即使它們具有相同的屬性。僅在與自身相同的物件引用進行比較時才會返回 <code>true</code>。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 兩個變數，兩個具有相同屬性的不同物件</span></span><br><span class="line"><span class="keyword">const</span> fruit = &#123; <span class="attr">name</span>: <span class="string">&quot;蘋果&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> fruitbear = &#123; <span class="attr">name</span>: <span class="string">&quot;蘋果&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">fruit == fruitbear; <span class="comment">// 返回 false</span></span><br><span class="line">fruit === fruitbear; <span class="comment">// 返回 false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 兩個變數，一個物件</span></span><br><span class="line"><span class="keyword">const</span> fruit = &#123; <span class="attr">name</span>: <span class="string">&quot;蘋果&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> fruitbear = fruit; <span class="comment">// 將 fruit 物件的引用賦值給 fruitbear</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此時 fruit 和 fruitbear 指向同一個物件</span></span><br><span class="line">fruit == fruitbear; <span class="comment">// 返回 true</span></span><br><span class="line">fruit === fruitbear; <span class="comment">// 返回 true</span></span><br><span class="line"></span><br><span class="line">fruit.<span class="property">name</span> = <span class="string">&quot;葡萄&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruitbear); <span class="comment">// &#123; name: &quot;葡萄&quot; &#125;，而不是 &#123; name: &quot;蘋果&quot; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="總結："><a href="#總結：" class="headerlink" title="總結："></a><strong>總結：</strong></h3><p>JavaScript 的物件是語言核心的基石之一，通過本文我們學習了如何創建、訪問和操作物件，以及如何使用方法和 <code>this</code> 來引用物件。了解這些概念對於進一步發展 JavaScript 應用程序至關重要，它為開發者提供了豐富的工具和技術，以更好地組織和管理代碼。</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects#%E6%9E%9A%E4%B8%BE%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7">MDN Web Docs</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/AlphaCamp-Notes/" rel="tag"># AlphaCamp_Notes</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/060855654.html" rel="prev" title="JavaScript資料型別與資料結構">
+      <i class="fa fa-chevron-left"></i> JavaScript資料型別與資料結構
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/061036494.html" rel="next" title="JavaScript JSON">
+      JavaScript JSON <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E6%96%B0%E7%89%A9%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">創建新物件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%89%A9%E4%BB%B6%E5%88%9D%E5%A7%8B%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">使用物件初始器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A7%8B%E9%80%A0%E5%87%BD%E6%95%B8"><span class="nav-number">1.2.</span> <span class="nav-text">使用構造函數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Object-create-%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">使用 Object.create() 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%92%8C%E5%B1%AC%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">物件和屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AA%E5%95%8F%E5%B1%AC%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">訪問屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%88%89%E5%B1%AC%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">列舉屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">2.3.</span> <span class="nav-text">刪除屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%BC%E6%89%BF"><span class="nav-number">2.4.</span> <span class="nav-text">繼承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%B8%80%E7%A8%AE%E9%A1%9E%E5%9E%8B%E7%9A%84%E6%89%80%E6%9C%89%E5%B0%8D%E8%B1%A1%E5%AE%9A%E7%BE%A9%E5%B1%AC%E6%80%A7"><span class="nav-number">2.5.</span> <span class="nav-text">為一種類型的所有對象定義屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">定義方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-this-%E4%BE%86%E5%BC%95%E7%94%A8%E5%B0%8D%E8%B1%A1"><span class="nav-number">2.7.</span> <span class="nav-text">使用 this 來引用對象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-getter-%E5%92%8C-setter"><span class="nav-number">2.8.</span> <span class="nav-text">定義 getter 和 setter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BC%83%E7%89%A9%E4%BB%B6"><span class="nav-number">2.9.</span> <span class="nav-text">比較物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90%EF%BC%9A"><span class="nav-number">2.10.</span> <span class="nav-text">總結：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">2.11.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Donald Wong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Donald Wong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DonaldWongSuiSang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DonaldWongSuiSang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:donaldwongsuisang@gmail.com" title="E-Mail → mailto:donaldwongsuisang@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Donald Wong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
