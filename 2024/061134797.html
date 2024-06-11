@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"donaldwongsuisang.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQZ7S0BSW3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JQZ7S0BSW3');
+</script>
+  <meta name="description" content="在 JavaScript 中，索引集合類型是一個關鍵概念。本文將探討如何使用這些集合類型，特別是數組（Array）結構。了解如何創建、引用元素以及應用常見的方法，將有助於更好地處理和操作數據集合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Array">
+<meta property="og:url" content="https://donaldwongsuisang.github.io/2024/061134797.html">
+<meta property="og:site_name" content="Donald&#39;s Learning log">
+<meta property="og:description" content="在 JavaScript 中，索引集合類型是一個關鍵概念。本文將探討如何使用這些集合類型，特別是數組（Array）結構。了解如何創建、引用元素以及應用常見的方法，將有助於更好地處理和操作數據集合。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-11T03:27:11.000Z">
+<meta property="article:modified_time" content="2024-06-11T07:30:26.663Z">
+<meta property="article:author" content="Donald Wong">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="AlphaCamp_Notes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://donaldwongsuisang.github.io/2024/061134797.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript Array | Donald's Learning log</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQZ7S0BSW3"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JQZ7S0BSW3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Donald's Learning log</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-blog fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://donaldwongsuisang.github.io/2024/061134797.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Donald Wong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Donald's Learning log">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript Array
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-06-11 11:27:11 / Modified: 15:30:26" itemprop="dateCreated datePublished" datetime="2024-06-11T11:27:11+08:00">2024-06-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">在 JavaScript 中，索引集合類型是一個關鍵概念。本文將探討如何使用這些集合類型，特別是數組（Array）結構。了解如何創建、引用元素以及應用常見的方法，將有助於更好地處理和操作數據集合。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Array（「陣列」）是類似列表（list）的物件（Object），它們的原型（Prototype）擁有方法（methods）來執行遍歷和變異操作。JavaScript 陣列的長度（元素數量），以及其元素的類型都不是固定的。取決於工程師如何選擇使用陣列，可以隨時更改陣列的長度，也可不連續儲存資料， 所以並不保證這些資料是集中的。</p>
+<h3 id="陣列是由名稱和索引引用的值構成的有序列表。"><a href="#陣列是由名稱和索引引用的值構成的有序列表。" class="headerlink" title="陣列是由名稱和索引引用的值構成的有序列表。"></a><strong>陣列是由名稱和索引引用的值構成的有序列表。</strong></h3><p>舉例來說，考慮一個名為 emp 的陣列，它包含按照數字員工編號索引的員工姓名。因此 emp[0] 是 0 號員工，emp[1] 是 1 號員工，以此類推。</p>
+<p><strong>JavaScript 中沒有明確的陣列數據類型</strong>。但是，你可以使用預定義的 Array 對象及其方法來處理應用程序中的陣列。Array 對象具有以各種方式操作陣列的方法，例如連接、反轉和排序。它有一個用於確定陣列長度的屬性和用於正則表達式的其他屬性。</p>
+<p>陣列有分為一般的陣列Array及型別陣列Typed Array，Typed Array 是泛指不同限定型別(typed)的陣列，且都是用來操作binary data。目前ES6定義了九種typed array types，詳細可以查看<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">MDN</a>。在這篇文章中，我們將專注於陣列(array)，但許多相同的概念也適用於類型化陣列，因為陣列和類型化陣列共享許多相似的方法。</p>
+<h3 id="創建數組"><a href="#創建數組" class="headerlink" title="創建數組"></a>創建數組</h3><p>以下語句創建了等效的數組：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = <span class="keyword">new</span> <span class="title class_">Array</span>(element0, element1, <span class="comment">/* … ,*/</span> elementN);</span><br><span class="line"><span class="keyword">const</span> arr2 = <span class="title class_">Array</span>(element0, element1, <span class="comment">/* … ,*/</span> elementN);</span><br><span class="line"><span class="keyword">const</span> arr3 = [element0, element1, <span class="comment">/* … ,*/</span> elementN];</span><br></pre></td></tr></table></figure>
+
+<p><code>element0, element1, …, elementN</code> 是數組元素的值列表。當指定這些值時，數組將以它們作為數組的元素進行初始化。數組的 <code>length</code> 屬性被設置為參數的數量。</p>
+<p>括號語法稱為“數組字面量”或“數組初始化式”。它比其他形式的數組創建更簡短，因此通常是首選。詳見數組字面量。</p>
+<p>為了創建一個長度不為0，但是又沒有任何元素的數組，可以選擇以下任何一種方式：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 這種方式...</span></span><br><span class="line"><span class="keyword">const</span> arr1 = <span class="keyword">new</span> <span class="title class_">Array</span>(arrayLength);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...與這種方式會形成相同數組</span></span><br><span class="line"><span class="keyword">const</span> arr2 = <span class="title class_">Array</span>(arrayLength);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 這個效果也一樣</span></span><br><span class="line"><span class="keyword">const</span> arr3 = [];</span><br><span class="line">arr3.<span class="property">length</span> = arrayLength;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>備註：以上代碼，<code>arrayLength</code> 必須為一個數字。否則，將會創建一個只有單個元素（內含提供的值）的數組。調用 <code>arr.length</code> 將返回 <code>arrayLength</code>，但數組不包含任何元素。<code>for...in</code> 循環在數組上找不到任何屬性。</p>
+<p>除了上面所示的新定義的變量外，數組還可以被賦值為新對象或現有對象的屬性：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="comment">// …</span></span><br><span class="line">obj.<span class="property">prop</span> = [element0, element1, <span class="comment">/* … ,*/</span> elementN];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">prop</span>: [element0, element1, <span class="comment">/* … ,*/</span> elementN] &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果你希望用單個元素初始化一個數組，而這個元素恰好又是數字，那麼你必須使用括號語法。當單個數字傳遞給 <code>Array()</code> 構造函數時，它將被解釋為 <code>arrayLength</code>，而不是單個元素。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創建一個只有唯一元素的數組：數字 42。</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">42</span>];</span><br></pre></td></tr></table></figure>
+
+<p>長度被設置為 42。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">42</span>);</span><br></pre></td></tr></table></figure>
+
+<p>這兩種方法之間的區別是重要的。第一種方法創建了一個包含單個元素（數字 42）的數組。而第二種方法創建了一個具有 42 個元素的數組，但所有這些元素的值均為 <code>undefined</code>。</p>
+<h3 id="數組索引"><a href="#數組索引" class="headerlink" title="數組索引"></a>數組索引</h3><p>數組中的每個元素都有一個關聯的數字索引，從 0 開始，逐一遞增。數組的第一個元素的索引是 0，第二個是 1，以此類推。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Banana&#x27;</span>, <span class="string">&#x27;Orange&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits[<span class="number">0</span>]); <span class="comment">// Apple</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits[<span class="number">1</span>]); <span class="comment">// Banana</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits[<span class="number">2</span>]); <span class="comment">// Orange</span></span><br></pre></td></tr></table></figure>
+
+<p>你可以通過索引來訪問和修改數組中的元素。如果你訪問一個不存在的索引，將返回 <code>undefined</code>。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits[<span class="number">3</span>]); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="數組長度"><a href="#數組長度" class="headerlink" title="數組長度"></a>數組長度</h3><p>每個數組都有一個 <code>length</code> 屬性，表示其元素的數量。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="property">length</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><code>length</code> 屬性的值等於數組中最大整數索引加上 1。</p>
+<h2 id="數組排序"><a href="#數組排序" class="headerlink" title="數組排序"></a>數組排序</h2><p>在處理數據時，通常需要按照某種順序對數組進行排序。JavaScript提供了<code>sort()</code>方法來排序數組的元素。默認情況下，它將元素視為字符串並按照Unicode字符順序進行排序。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>];</span><br><span class="line">numbers.<span class="title function_">sort</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<p>如果需要按照其他標準排序，可以通過提供<code>compareFunction</code>作為參數來實現。例如，按照數字大小排序：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>compareFunction</code> 被應用，陣列元素們將根據比較函式之回傳值來排序。如果 <code>a</code> 和 <code>b</code> 為被比較之兩元素，則：</p>
+<ul>
+<li>若 <code>compareFunction(a, b)</code> 的回傳值小於 0，則會把 <code>a</code> 排在小於 <code>b</code> 之索引的位置，即 <code>a</code> 排在 <code>b</code> 前面。</li>
+<li>若 <code>compareFunction(a, b)</code> 回傳 0，則 <code>a</code> 與 <code>b</code> 皆不會改變彼此的順序，但會與其他全部的元素比較來排序。備註：ECMAscript 標準並不保證這個行為，因此不是所有瀏覽器（如 Mozilla 版本在 2003 以前）都遵守此行為。</li>
+<li>若 <code>compareFunction(a, b)</code> 的回傳值大於 0，則會把 <code>b</code> 排在小於 <code>a</code> 之索引的位置，即 <code>b</code> 排在 <code>a</code> 前面。</li>
+<li><code>compareFunction(a, b)</code> 在給予一組特定元素 a 及 b 為此函數之兩引數時必須總是回傳相同的值。若回傳值不一致，排序順序則為 undefined。</li>
+</ul>
+<h2 id="數組搜索"><a href="#數組搜索" class="headerlink" title="數組搜索"></a>數組搜索</h2><p>有時候，我們需要查找數組中是否存在特定的值，或者找到特定值的索引。JavaScript提供了<code>indexOf()</code>和<code>lastIndexOf()</code>方法來實現這一點。<code>indexOf()</code>方法返回第一個匹配的元素索引，而<code>lastIndexOf()</code>返回最後一個匹配的元素索引。如果未找到匹配，則返回-1。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;apple&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">indexOf</span>(<span class="string">&quot;apple&quot;</span>)); <span class="comment">// 0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">lastIndexOf</span>(<span class="string">&quot;apple&quot;</span>)); <span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">indexOf</span>(<span class="string">&quot;pear&quot;</span>)); <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="刪除和添加元素"><a href="#刪除和添加元素" class="headerlink" title="刪除和添加元素"></a>刪除和添加元素</h2><p>JavaScript提供了多種方法來刪除和添加數組中的元素。<code>pop()</code>方法用於刪除並返回數組的最後一個元素，<code>push()</code>方法用於在數組的末尾添加一個或多個元素。類似地，<code>shift()</code>方法用於刪除並返回數組的第一個元素，而<code>unshift()</code>方法用於在數組的開頭添加一個或多個元素。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>];</span><br><span class="line">fruits.<span class="title function_">pop</span>(); <span class="comment">// &quot;orange&quot;</span></span><br><span class="line">fruits.<span class="title function_">push</span>(<span class="string">&quot;pear&quot;</span>); <span class="comment">// [&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;]</span></span><br><span class="line">fruits.<span class="title function_">shift</span>(); <span class="comment">// &quot;apple&quot;</span></span><br><span class="line">fruits.<span class="title function_">unshift</span>(<span class="string">&quot;grape&quot;</span>); <span class="comment">// [&quot;grape&quot;, &quot;banana&quot;, &quot;pear&quot;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="遍歷數組"><a href="#遍歷數組" class="headerlink" title="遍歷數組"></a>遍歷數組</h2><p>遍歷數組是在開發中非常常見的操作，它允許我們對數組中的每個元素進行操作。JavaScript提供了多種方法來實現數組的遍歷，包括<code>for</code>循環、<code>forEach()</code>方法、<code>map()</code>方法等等。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">// 使用for循環</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numbers.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(numbers[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用forEach方法</span></span><br><span class="line">numbers.<span class="title function_">forEach</span>(<span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 使用map方法</span></span><br><span class="line"><span class="keyword">const</span> squaredNumbers = numbers.<span class="title function_">map</span>(<span class="function"><span class="params">number</span> =&gt;</span> number * number);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(squaredNumbers);</span><br></pre></td></tr></table></figure>
+
+<h2 id="過濾數組"><a href="#過濾數組" class="headerlink" title="過濾數組"></a>過濾數組</h2><p>有時候我們需要根據特定條件過濾數組中的元素，JavaScript提供了<code>filter()</code>方法來實現這一操作。<code>filter()</code>方法會返回一個新的數組，其中包含符合條件的元素。例如，過濾出所有偶數：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> evenNumbers = numbers.<span class="title function_">filter</span>(<span class="function"><span class="params">number</span> =&gt;</span> number % <span class="number">2</span> === <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(evenNumbers); <span class="comment">// [2, 4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="範圍查詢"><a href="#範圍查詢" class="headerlink" title="範圍查詢"></a>範圍查詢</h2><p>有時候我們需要查詢數組中的一部分元素，JavaScript提供了<code>slice()</code>方法來實現這一操作。<code>slice()</code>方法會返回一個新的數組，其中包含指定範圍的元素。例如，提取第二個到第四個元素：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;grape&quot;</span>];</span><br><span class="line"><span class="keyword">const</span> selectedFruits = fruits.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectedFruits); <span class="comment">// [&quot;banana&quot;, &quot;orange&quot;, &quot;pear&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，<code>slice(1, 4)</code>返回從索引1（包括）到索引4（不包括）之間的元素，即2到4。</p>
+<h2 id="判斷元素是否存在"><a href="#判斷元素是否存在" class="headerlink" title="判斷元素是否存在"></a>判斷元素是否存在</h2><p>另一個常見的需求是判斷數組中是否存在某個元素。JavaScript提供了<code>includes()</code>方法來實現這一操作。如果元素存在於數組中，則返回<code>true</code>；如果不存在，則返回<code>false</code>。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;grape&quot;</span>];</span><br><span class="line"><span class="keyword">const</span> exists = fruits.<span class="title function_">includes</span>(<span class="string">&quot;orange&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(exists); <span class="comment">// tru</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查找符合條件的元素"><a href="#查找符合條件的元素" class="headerlink" title="查找符合條件的元素"></a>查找符合條件的元素</h2><p>有時我們需要在數組中查找符合特定條件的元素。JavaScript提供了<code>find()</code>方法來實現這一操作。<code>find()</code>方法會返回第一個符合條件的元素，如果沒有找到則返回<code>undefined</code>。例如，查找第一個以”a”開頭的水果：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;grape&quot;</span>];</span><br><span class="line"><span class="keyword">const</span> startsWithA = fruits.<span class="title function_">find</span>(<span class="function"><span class="params">fruit</span> =&gt;</span> fruit.<span class="title function_">startsWith</span>(<span class="string">&quot;a&quot;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(startsWithA); <span class="comment">// &quot;apple&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="查找符合條件的元素索引"><a href="#查找符合條件的元素索引" class="headerlink" title="查找符合條件的元素索引"></a>查找符合條件的元素索引</h2><p>除了查找符合條件的元素外，有時我們還需要查找其索引。JavaScript提供了<code>findIndex()</code>方法來實現這一操作。<code>findIndex()</code>方法會返回第一個符合條件的元素的索引，如果沒有找到則返回-1。例如，查找第一個以”p”開頭的水果的索引：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;grape&quot;</span>];</span><br><span class="line"><span class="keyword">const</span> index = fruits.<span class="title function_">findIndex</span>(<span class="function"><span class="params">fruit</span> =&gt;</span> fruit.<span class="title function_">startsWith</span>(<span class="string">&quot;p&quot;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(index); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="合併數組"><a href="#合併數組" class="headerlink" title="合併數組"></a>合併數組</h2><p>有時候我們需要將多個數組合併成一個，JavaScript提供了<code>concat()</code>方法來實現這一操作。<code>concat()</code>方法會返回一個新的數組，其中包含合併後的所有元素。例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="keyword">const</span> mergedArray = arr1.<span class="title function_">concat</span>(arr2);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mergedArray); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>數組是 JavaScript 中常用的數據結構之一，用於存儲和操作有序的元素集合。通過本文，你了解了如何創建、訪問和操作數組，以及一些常見的迭代技巧。這將幫助你更好地利用數組在你的 JavaScript 項目中。</p>
+<p>瞭解數組的特性和操作方法對於開發 JavaScript 應用程序至關重要。通過實踐和實際應用，你將能夠更好地利用這一強大的數據結構，使你的代碼更加高效和易於維護。</p>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN Web 文檔：數組</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals">MDN Web 文檔：數組字面量</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">MDN Web 文檔：TypedArray</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#%E8%AA%9E%E6%B3%95">MDN Web 文檔：<strong>Array.prototype.sort()</strong></a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/AlphaCamp-Notes/" rel="tag"># AlphaCamp_Notes</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/061036494.html" rel="prev" title="JavaScript JSON">
+      <i class="fa fa-chevron-left"></i> JavaScript JSON
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E6%98%AF%E7%94%B1%E5%90%8D%E7%A8%B1%E5%92%8C%E7%B4%A2%E5%BC%95%E5%BC%95%E7%94%A8%E7%9A%84%E5%80%BC%E6%A7%8B%E6%88%90%E7%9A%84%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">陣列是由名稱和索引引用的值構成的有序列表。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E6%95%B8%E7%B5%84"><span class="nav-number">2.</span> <span class="nav-text">創建數組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E7%B5%84%E7%B4%A2%E5%BC%95"><span class="nav-number">3.</span> <span class="nav-text">數組索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E7%B5%84%E9%95%B7%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">數組長度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B8%E7%B5%84%E6%8E%92%E5%BA%8F"><span class="nav-number"></span> <span class="nav-text">數組排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B8%E7%B5%84%E6%90%9C%E7%B4%A2"><span class="nav-number"></span> <span class="nav-text">數組搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E5%92%8C%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-number"></span> <span class="nav-text">刪除和添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%8D%E6%AD%B7%E6%95%B8%E7%B5%84"><span class="nav-number"></span> <span class="nav-text">遍歷數組</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%8E%E6%BF%BE%E6%95%B8%E7%B5%84"><span class="nav-number"></span> <span class="nav-text">過濾數組</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%84%E5%9C%8D%E6%9F%A5%E8%A9%A2"><span class="nav-number"></span> <span class="nav-text">範圍查詢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%B7%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number"></span> <span class="nav-text">判斷元素是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AC%A6%E5%90%88%E6%A2%9D%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number"></span> <span class="nav-text">查找符合條件的元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AC%A6%E5%90%88%E6%A2%9D%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E7%B4%A2%E5%BC%95"><span class="nav-number"></span> <span class="nav-text">查找符合條件的元素索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E6%95%B8%E7%B5%84"><span class="nav-number"></span> <span class="nav-text">合併數組</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">1.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">參考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Donald Wong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Donald Wong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DonaldWongSuiSang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DonaldWongSuiSang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:donaldwongsuisang@gmail.com" title="E-Mail → mailto:donaldwongsuisang@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Donald Wong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
