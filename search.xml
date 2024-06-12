@@ -646,4 +646,206 @@
         <tag>AlphaCamp_Notes</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JavaScript對等比較</title>
+    <url>/2024/06121454.html</url>
+    <content><![CDATA[<h3 id="嚴格相等"><a href="#嚴格相等" class="headerlink" title="嚴格相等 (&#x3D;&#x3D;&#x3D;)"></a>嚴格相等 (&#x3D;&#x3D;&#x3D;)</h3><p>嚴格相等是 JavaScript 中最常用的比較方法之一。它比較兩個值，且不進行類型轉換。如果比較的值類型不同，則直接返回 <code>false</code>。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;0&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num === num); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === obj); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str === str); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num === obj); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num === str); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === str); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> === <span class="literal">undefined</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === <span class="literal">null</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === <span class="literal">undefined</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="嚴格相等的優點"><a href="#嚴格相等的優點" class="headerlink" title="嚴格相等的優點"></a>嚴格相等的優點</h3><ul>
+<li><strong>性能優勢</strong>：不需要進行類型轉換。</li>
+<li><strong>預測性強</strong>：比較結果更可預測。</li>
+</ul>
+<h3 id="使用場景"><a href="#使用場景" class="headerlink" title="使用場景"></a>使用場景</h3><p>嚴格相等適合在需要確保值類型和內容完全相同的情況下使用，例如驗證表單輸入、數據比較等。</p>
+<h3 id="一般相等"><a href="#一般相等" class="headerlink" title="一般相等 (&#x3D;&#x3D;)"></a>一般相等 (&#x3D;&#x3D;)</h3><p>一般相等運算符會在比較前嘗試將兩個值轉換為相同的類型。這可能會導致一些意想不到的結果。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;0&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num == num); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == obj); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str == str); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num == obj); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num == str); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == str); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == <span class="literal">null</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == <span class="literal">undefined</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="一般相等的特點"><a href="#一般相等的特點" class="headerlink" title="一般相等的特點"></a>一般相等的特點</h3><ul>
+<li><strong>類型轉換</strong>：將比較值轉換為相同類型後再比較。</li>
+<li><strong>應用廣泛</strong>：在某些情況下可以簡化代碼。</li>
+</ul>
+<h3 id="使用場景-1"><a href="#使用場景-1" class="headerlink" title="使用場景"></a>使用場景</h3><p>一般相等適合在可以接受自動類型轉換的簡單比較中使用，但在更嚴謹的應用中應避免使用。</p>
+<h3 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is"></a>Object.is</h3><p>Object.is 是 ES2015 引入的一種新的相等比較方法，它在處理 <code>NaN</code>、<code>+0</code> 和 <code>-0</code> 時有特殊行為。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>, <span class="title class_">NaN</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(+<span class="number">0</span>, -<span class="number">0</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="number">0</span>, -<span class="number">0</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="特點"><a href="#特點" class="headerlink" title="特點"></a>特點</h3><ul>
+<li><strong>處理 NaN</strong>：Object.is 能正確比較 <code>NaN</code> 值。</li>
+<li><strong>區分 +0 和 -0</strong>：能區分正零和負零。</li>
+</ul>
+<h3 id="使用場景-2"><a href="#使用場景-2" class="headerlink" title="使用場景"></a>使用場景</h3><p>Object.is 適合在需要精確比較特殊值（如 <code>NaN</code> 和 <code>0</code>）的情況下使用。</p>
+<h3 id="零值相等"><a href="#零值相等" class="headerlink" title="零值相等"></a>零值相等</h3><p>零值相等與同值相等類似，但會將 <code>+0</code> 和 <code>-0</code> 視為相同。</p>
+<h3 id="同值相等"><a href="#同值相等" class="headerlink" title="同值相等"></a>同值相等</h3><p>同值相等用於比較兩個值是否在功能上相同，這在處理不可變屬性時尤其有用。</p>
+<h3 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h3><p>理解 JavaScript 中的相等比較操作符是編寫健壯代碼的關鍵。嚴格相等（&#x3D;&#x3D;&#x3D;）通常是最安全和高效的選擇，而一般相等（&#x3D;&#x3D;）在需要類型轉換的簡單比較中有其應用。Object.is 提供了處理特殊值的精確方法。根據具體需求選擇合適的比較方法，可以提高代碼的可靠性和可維護性。</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Equality_comparisons_and_sameness#when_to_use_object.is_versus_triple_equals">MDN Web Docs - Equality comparisons and sameness</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>AlphaCamp_Notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript條件語句</title>
+    <url>/2024/06129828.html</url>
+    <content><![CDATA[<h2 id="什麼是條件語句？"><a href="#什麼是條件語句？" class="headerlink" title="什麼是條件語句？"></a>什麼是條件語句？</h2><p>從小到大，我們常常需要在不同的情況下做出決策。例如：「我應該吃一個或兩個餅乾？」、「我應該留在家鄉工作還是去美國學習天體物理學？」這些決策可以用JavaScript中的條件語句來表示。</p>
+<h2 id="if…else-語句"><a href="#if…else-語句" class="headerlink" title="if…else 語句"></a>if…else 語句</h2><h3 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  <span class="comment">// 當條件為真時執行的代碼</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 否則執行的代碼</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>關鍵字 if</strong> 和 <strong>括號</strong> 內包含的條件。</li>
+<li><strong>條件</strong> 是一個比較運算式，會返回true或false。</li>
+<li><strong>大括號</strong> 內的代碼塊，只有在條件為true時才執行。</li>
+<li><strong>關鍵字 else</strong>。</li>
+<li><strong>另一組大括號</strong> 內的代碼塊，只有在條件為false時才執行。</li>
+</ul>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> shoppingDone = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (shoppingDone) &#123;</span><br><span class="line">  <span class="keyword">var</span> childsAllowance = <span class="number">10</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> childsAllowance = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這段代碼示範了根據變數<code>shoppingDone</code>的值來決定<code>childsAllowance</code>的值。</p>
+<h2 id="else-if-語句"><a href="#else-if-語句" class="headerlink" title="else if 語句"></a>else if 語句</h2><p>當需要多於兩個選擇時，可以使用else if語句來鏈接更多的選擇。</p>
+<h3 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a>範例</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> select = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;select&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> para = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line">select.<span class="title function_">addEventListener</span>(<span class="string">&quot;change&quot;</span>, setWeather);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setWeather</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> choice = select.<span class="property">value</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (choice === <span class="string">&quot;sunny&quot;</span>) &#123;</span><br><span class="line">    para.<span class="property">textContent</span> = <span class="string">&quot;天氣晴朗，穿短褲吧！去海灘或公園，吃個冰淇淋。&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (choice === <span class="string">&quot;rainy&quot;</span>) &#123;</span><br><span class="line">    para.<span class="property">textContent</span> = <span class="string">&quot;外面下雨了，帶上雨衣和雨傘，不要待太久。&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (choice === <span class="string">&quot;snowing&quot;</span>) &#123;</span><br><span class="line">    para.<span class="property">textContent</span> = <span class="string">&quot;雪花飛舞，天氣很冷！最好待在家裡喝熱巧克力，或去堆雪人。&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (choice === <span class="string">&quot;overcast&quot;</span>) &#123;</span><br><span class="line">    para.<span class="property">textContent</span> = <span class="string">&quot;天氣陰沉，可能會下雨，帶上雨衣以防萬一。&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    para.<span class="property">textContent</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>這段代碼根據用戶選擇的天氣類型來顯示不同的消息。</p>
+<h2 id="比較運算符"><a href="#比較運算符" class="headerlink" title="比較運算符"></a>比較運算符</h2><p>比較運算符用於測試條件語句中的條件：</p>
+<ul>
+<li><code>===</code> 和 <code>!==</code>：測試兩個值是否相同或不相同。</li>
+<li><code>&lt;</code> 和 <code>&gt;</code>：測試一個值是否小於或大於另一個值。</li>
+<li><code>&lt;=</code> 和 <code>&gt;=</code>：測試一個值是否小於等於或大於等於另一個值。</li>
+</ul>
+<h2 id="邏輯運算符"><a href="#邏輯運算符" class="headerlink" title="邏輯運算符"></a>邏輯運算符</h2><ul>
+<li><code>&amp;&amp;</code>（AND）：所有條件都必須為真。</li>
+<li><code>||</code>（OR）：只需一個條件為真。</li>
+<li><code>!</code>（NOT）：將條件取反。</li>
+</ul>
+<h3 id="範例-2"><a href="#範例-2" class="headerlink" title="範例"></a>範例</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">javascript複製程式碼</span><br><span class="line"><span class="keyword">if</span> (choice === <span class="string">&quot;sunny&quot;</span> &amp;&amp; temperature &lt; <span class="number">86</span>) &#123;</span><br><span class="line">  para.<span class="property">textContent</span> = <span class="string">&quot;天氣晴朗且溫度適中，去海灘或公園玩吧！&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (choice === <span class="string">&quot;sunny&quot;</span> &amp;&amp; temperature &gt;= <span class="number">86</span>) &#123;</span><br><span class="line">  para.<span class="property">textContent</span> = <span class="string">&quot;天氣晴朗但很熱！如果要出去，記得塗防曬霜。&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這段代碼示範了如何使用AND運算符來測試多個條件。</p>
+<h2 id="switch-語句"><a href="#switch-語句" class="headerlink" title="switch 語句"></a>switch 語句</h2><p>當有多個選擇時，使用switch語句可以更簡潔地處理。</p>
+<h3 id="範例-3"><a href="#範例-3" class="headerlink" title="範例"></a>範例</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> select = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;select&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> para = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line">select.<span class="title function_">addEventListener</span>(<span class="string">&quot;change&quot;</span>, setWeather);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setWeather</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> choice = select.<span class="property">value</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (choice) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;sunny&quot;</span>:</span><br><span class="line">      para.<span class="property">textContent</span> = <span class="string">&quot;天氣晴朗，穿短褲吧！去海灘或公園，吃個冰淇淋。&quot;</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;rainy&quot;</span>:</span><br><span class="line">      para.<span class="property">textContent</span> = <span class="string">&quot;外面下雨了，帶上雨衣和雨傘，不要待太久。&quot;</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;snowing&quot;</span>:</span><br><span class="line">      para.<span class="property">textContent</span> = <span class="string">&quot;雪花飛舞，天氣很冷！最好待在家裡喝熱巧克力，或去堆雪人。&quot;</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;overcast&quot;</span>:</span><br><span class="line">      para.<span class="property">textContent</span> = <span class="string">&quot;天氣陰沉，可能會下雨，帶上雨衣以防萬一。&quot;</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      para.<span class="property">textContent</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這段代碼使用switch語句根據選擇的天氣類型來顯示消息。因為switch語句會順序處理，所以選到合適的選擇時不再繼續執行switch 需要加上break，要不然default的行動也會被執行</p>
+<h2 id="三元運算符"><a href="#三元運算符" class="headerlink" title="三元運算符"></a>三元運算符</h2><p>三元運算符是一種簡短的條件語句，可以在一行中測試條件並返回一個值或執行一段代碼。</p>
+<h3 id="範例-4"><a href="#範例-4" class="headerlink" title="範例"></a>範例</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> greeting = isBirthday</span><br><span class="line">  ? <span class="string">&quot;生日快樂，Smith女士！祝你有美好的一天！&quot;</span></span><br><span class="line">  : <span class="string">&quot;早上好，Smith女士。&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>這段代碼根據<code>isBirthday</code>的值來決定要顯示的問候語。</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>條件結構是JavaScript中的重要組成部分，能夠使你的應用程式根據不同的輸入執行不同的代碼。通過理解和掌握if…else、else if、switch語句以及三元運算符，你可以使你的代碼更具邏輯性和可讀性，從而提高應用程式的智能化程度。</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Control_flow_and_error_handling">Mozilla Developer Network (MDN)</a></li>
+<li><a href="https://www.javascript.com/">JavaScript資料來源</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>AlphaCamp_Notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript迴圈</title>
+    <url>/2024/061227608.html</url>
+    <content><![CDATA[<h2 id="1-for-迴圈"><a href="#1-for-迴圈" class="headerlink" title="1. for 迴圈"></a>1. <code>for</code> 迴圈</h2><p><code>for</code> 迴圈會持續執行，直到指定的條件為假。它的語法如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ([初始化表達式]; [條件]; [遞增表達式]) &#123;</span><br><span class="line">  <span class="comment">// 執行語句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> step = <span class="number">0</span>; step &lt; <span class="number">5</span>; step++) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;向東走一步&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-do-while-迴圈"><a href="#2-do-while-迴圈" class="headerlink" title="2. do...while 迴圈"></a>2. <code>do...while</code> 迴圈</h2><p><code>do...while</code> 迴圈會先執行一次語句，然後重複執行該語句直到條件為假。</p>
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  i += <span class="number">1</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt; <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-while-迴圈"><a href="#3-while-迴圈" class="headerlink" title="3. while 迴圈"></a>3. <code>while</code> 迴圈</h2><p><code>while</code> 迴圈會持續執行其語句，只要條件為真。</p>
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (n &lt; <span class="number">3</span>) &#123;</span><br><span class="line">  n++;</span><br><span class="line">  x += n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-label-語句"><a href="#4-label-語句" class="headerlink" title="4. label 語句"></a>4. <code>label</code> 語句</h2><p><code>label</code> 為語句提供一個識別符號，使得可以在程式的其他地方引用它。</p>
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="attr">markLoop</span>: <span class="keyword">while</span> (theMark == <span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="title function_">doSomething</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-break-語句"><a href="#5-break-語句" class="headerlink" title="5. break 語句"></a>5. <code>break</code> 語句</h2><p><code>break</code> 用於終止迴圈、<code>switch</code> 或與 <code>label</code> 結合使用。</p>
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (a[i] == theValue) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-continue-語句"><a href="#6-continue-語句" class="headerlink" title="6. continue 語句"></a>6. <code>continue</code> 語句</h2><p><code>continue</code> 用於重新開始一個 <code>while</code>、<code>do...while</code>、<code>for</code> 或 <code>label</code> 迴圈的下一次迭代。</p>
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">5</span>) &#123;</span><br><span class="line">  i++;</span><br><span class="line">  <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  n += i;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(n) <span class="comment">//1, 3, 7, 12</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-for-in-語句"><a href="#7-for-in-語句" class="headerlink" title="7. for...in 語句"></a>7. <code>for...in</code> 語句</h2><p><code>for...in</code> 語句會遍歷物件的所有可枚舉屬性。它傳回的是數字的索引還有可能是自定的屬性名。</p>
+<p>範例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dump_props</span>(<span class="params">obj, obj_name</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    result += obj_name + <span class="string">&quot;.&quot;</span> + i + <span class="string">&quot; = &quot;</span> + obj[i] + <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">&quot;&lt;hr&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment">//對於一個擁有 make 跟 model 屬性的物件 car 來說，執行結果是：</span></span><br><span class="line"><span class="comment">// car.make = Ford;</span></span><br><span class="line"><span class="comment">// car.model = Mustang;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-for-of-語句"><a href="#8-for-of-語句" class="headerlink" title="8. for...of 語句"></a>8. <code>for...of</code> 語句</h2><p><code>for...of</code> 語句遍歷可迭代對象的值。在iterable objects(可迭代的物件)上建立了一個循環 (包含 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a>, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a>, <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>, arguments(參數) 物件 等等), 對每個獨特屬性的值使用一個準備被執行的有陳述式的自訂迭代掛勾</p>
+<p>下列範例是對比<code>for...in</code> 與<code>for...of</code> 的差異：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line">arr.<span class="property">foo</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// logs &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// logs 3, 5, 7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>JavaScript 提供了多種迭代語句，滿足不同的需求。從基本的 <code>for</code> 迴圈到更高階的 <code>for...of</code> 迴圈，每種語句都有其特定的用途。掌握這些迴圈語句，能讓我們在編寫代碼時更加靈活和高效。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Loops_and_iteration">JavaScript Guide: Loops and iteration</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>AlphaCamp_Notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 錯誤處理 Error Handling</title>
+    <url>/2024/061250913.html</url>
+    <content><![CDATA[<h3 id="錯誤類型"><a href="#錯誤類型" class="headerlink" title="錯誤類型"></a>錯誤類型</h3><p>除了通用的 <code>Error</code> 構造函數外，JavaScript 提供了多種錯誤類型，用於處理特定情況的錯誤。</p>
+<ul>
+<li><strong>EvalError</strong>: 表示與 <code>eval()</code> 有關的錯誤。這個錯誤不再被當前的 ECMAScript 規範所採用。</li>
+<li><strong>RangeError</strong>: 表示數值變量或參數超出其有效範圍的錯誤。</li>
+<li><strong>ReferenceError</strong>: 表示無效引用的錯誤。</li>
+<li><strong>SyntaxError</strong>: 表示語法錯誤。</li>
+<li><strong>TypeError</strong>: 表示變量或參數不屬於有效類型的錯誤。</li>
+<li><strong>URIError</strong>: 表示傳遞給 <code>encodeURI()</code> 或 <code>decodeURI()</code> 的參數無效的錯誤。</li>
+<li><strong>AggregateError</strong>: 表示包含多個錯誤的實例，通常由某些操作（如 <code>Promise.any()</code>）產生。</li>
+<li><strong>InternalError</strong>（非標準）: 表示 JavaScript 引擎內部錯誤，例如遞歸太多。</li>
+</ul>
+<h3 id="異常處理語句"><a href="#異常處理語句" class="headerlink" title="異常處理語句"></a>異常處理語句</h3><p>您可以使用 <code>throw</code> 語句拋出異常，並使用 <code>try...catch</code> 語句進行處理。</p>
+<h3 id="throw-語句"><a href="#throw-語句" class="headerlink" title="throw 語句"></a><code>throw</code> 語句</h3><p><code>throw</code> 語句用於拋出異常。它可以拋出任何表達式，不限於特定類型。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="string">&quot;Error2&quot;</span>; <span class="comment">// 字符串類型</span></span><br><span class="line"><span class="keyword">throw</span> <span class="number">42</span>; <span class="comment">// 數字類型</span></span><br><span class="line"><span class="keyword">throw</span> <span class="literal">true</span>; <span class="comment">// 布爾類型</span></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">  <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;I&#x27;m an object!&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="try-catch-語句"><a href="#try-catch-語句" class="headerlink" title="try...catch 語句"></a><code>try...catch</code> 語句</h3><p><code>try...catch</code> 語句標記一個要嘗試執行的語句塊，並指定如果拋出異常該如何處理。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getMonthName</span>(<span class="params">mo</span>) &#123;</span><br><span class="line">  mo--; <span class="comment">// 調整月數以適應數組索引（0 = 一月，11 = 十二月）</span></span><br><span class="line">  <span class="keyword">const</span> months = [<span class="string">&quot;Jan&quot;</span>, <span class="string">&quot;Feb&quot;</span>, <span class="string">&quot;Mar&quot;</span>, <span class="string">&quot;Apr&quot;</span>, <span class="string">&quot;May&quot;</span>, <span class="string">&quot;Jun&quot;</span>, <span class="string">&quot;Jul&quot;</span>, <span class="string">&quot;Aug&quot;</span>, <span class="string">&quot;Sep&quot;</span>, <span class="string">&quot;Oct&quot;</span>, <span class="string">&quot;Nov&quot;</span>, <span class="string">&quot;Dec&quot;</span>];</span><br><span class="line">  <span class="keyword">if</span> (months[mo]) &#123;</span><br><span class="line">    <span class="keyword">return</span> months[mo];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;InvalidMonthNo&quot;</span>); <span class="comment">// 使用 throw 關鍵字拋出異常</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  monthName = <span class="title function_">getMonthName</span>(myMonth); <span class="comment">// 函數可能拋出異常</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  monthName = <span class="string">&quot;unknown&quot;</span>;</span><br><span class="line">  <span class="title function_">logMyErrors</span>(e); <span class="comment">// 將異常對象傳遞給錯誤處理器（例如您的函數）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="catch-塊"><a href="#catch-塊" class="headerlink" title="catch 塊"></a><code>catch</code> 塊</h3><p><code>catch</code> 塊用於處理 <code>try</code> 塊中可能生成的所有異常。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">// 處理異常的語句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>catch</code> 塊會指定一個標識符來保存 <code>throw</code> 語句拋出的值。此標識符在進入 <code>catch</code> 塊時創建，並在 <code>catch</code> 塊執行完畢後不再存在。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="string">&quot;myException&quot;</span>; <span class="comment">// 生成異常</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="title function_">logMyErrors</span>(err); <span class="comment">// 將異常對象傳遞給錯誤處理器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：在 catch 塊中記錄錯誤時，建議使用 console.error() 而非 console.log()，以便更好地調試。</p>
+</blockquote>
+<h3 id="finally-塊"><a href="#finally-塊" class="headerlink" title="finally 塊"></a><code>finally</code> 塊</h3><p><code>finally</code> 塊包含在 <code>try</code> 和 <code>catch</code> 塊執行之後執行的語句。即使沒有拋出異常，<code>finally</code> 塊也會執行。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">openMyFile</span>();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="title function_">writeMyFile</span>(theData); <span class="comment">// 這可能會拋出錯誤</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="title function_">handleError</span>(e); <span class="comment">// 如果發生錯誤，處理錯誤</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  <span class="title function_">closeMyFile</span>(); <span class="comment">// 總是關閉資源</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>finally</code> 塊返回一個值，該值將成為整個 <code>try...catch...finally</code> 語句的返回值，無論 <code>try</code> 和 <code>catch</code> 塊中是否有 <code>return</code> 語句。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">throw</span> <span class="string">&quot;bogus&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">f</span>()); <span class="comment">// 0, 1, 3, false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="嵌套-try-catch-語句"><a href="#嵌套-try-catch-語句" class="headerlink" title="嵌套 try...catch 語句"></a>嵌套 <code>try...catch</code> 語句</h3><p>您可以嵌套多個 <code>try...catch</code> 語句。如果內部 <code>try</code> 塊沒有對應的 <code>catch</code> 塊，外部的 <code>catch</code> 塊將被檢查是否匹配。</p>
+<h3 id="使用-Error-對象"><a href="#使用-Error-對象" class="headerlink" title="使用 Error 對象"></a>使用 <code>Error</code> 對象</h3><p>根據錯誤類型，您可以使用 <code>name</code> 和 <code>message</code> 屬性來獲取更詳細的信息。若拋出自定義異常，可以使用 <code>Error</code> 構造函數：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">doSomethingErrorProne</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">ourCodeMakesAMistake</span>()) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;The message&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">doSomethingToGetAJavaScriptError</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="title function_">doSomethingErrorProne</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(e.<span class="property">name</span>); <span class="comment">// &#x27;Error&#x27;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(e.<span class="property">message</span>); <span class="comment">// &#x27;The message&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling_statements">MDN Web Docs: JavaScript Guide</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error">MDN Web Docs: Error</a></li>
+</ol>
+<h3 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h3><p>在 JavaScript 中，錯誤處理機制十分靈活，允許開發者使用 <code>throw</code> 和 <code>try...catch...finally</code> 語句來處理不同類型的錯誤。通過理解和運用這些機制，可以提高代碼的魯棒性，確保應用程序在面對異常情況時能夠穩定運行</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>AlphaCamp_Notes</tag>
+      </tags>
+  </entry>
 </search>
